@@ -1,5 +1,5 @@
 /**
- * Hero Component - Antigravity Elite Agency
+ * Hero Component - Yay Agency
  * React 19 + GSAP 4 with SplitText Typography Animations
  */
 
@@ -14,8 +14,8 @@ interface HeroProps {
 }
 
 export default function Hero({
-    title = 'Antigravity',
-    subtitle = 'Elite Interactive Agency',
+    title = 'Yay Agency',
+    subtitle = 'Creative Excellence in Motion',
     ctaText = 'Explore Our Work',
     ctaHref = '#portfolio',
 }: HeroProps) {
