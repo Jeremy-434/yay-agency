@@ -170,6 +170,33 @@
   --container-lg: 1024px;
   --container-xl: 1280px;
   --container-2xl: 1536px;
+
+  /* ============================================
+     LEGACY MAPPINGS (Backward Compatibility)
+     ============================================ */
+  --space-1: var(--spacing-1);
+  --space-2: var(--spacing-2);
+  --space-3: var(--spacing-3);
+  --space-4: var(--spacing-4);
+  --space-5: var(--spacing-5);
+  --space-6: var(--spacing-6);
+  --space-8: var(--spacing-8);
+  --space-10: var(--spacing-10);
+  --space-12: var(--spacing-12);
+
+  --font-size-1: var(--font-size-xs);
+  --font-size-2: var(--font-size-sm);
+  --font-size-3: var(--font-size-base);
+  --font-size-4: var(--font-size-lg);
+  --font-size-5: var(--font-size-xl);
+  --font-size-6: var(--font-size-2xl);
+  --font-size-7: var(--font-size-3xl);
+  --font-size-8: var(--font-size-4xl);
+
+  --max-width-0: var(--container-sm);
+  --max-width-1: var(--container-md);
+  --max-width-2: var(--container-lg);
+  --max-width-3: var(--container-xl);
 }
 
 /* ============================================

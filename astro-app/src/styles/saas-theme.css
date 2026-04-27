@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@theme {
+  /* SaaS Specific Theme Overrides (Light Mode) */
+  --color-brand-primary: #0EA5E9;
+  --color-brand-secondary: #38BDF8;
+  --color-brand-accent: #F97316; /* Warm CTA */
+  
+  --color-bg-dark: #F0F9FF; /* Overriding for light theme */
+  --color-bg-darker: #E0F2FE;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-glass: rgba(255, 255, 255, 0.7);
+
+  --color-text-primary: #0C4A6E;
+  --color-text-secondary: #075985;
+  --color-text-muted: #0369a1;
+  --color-text-inverse: #F0F9FF;
+
+  --font-family-main: 'Open Sans', system-ui, sans-serif;
+  --font-family-display: 'Poppins', sans-serif;
+
+  /* Custom SaaS Shadows */
+  --shadow-saas: 0 10px 15px -3px rgba(14, 165, 233, 0.1), 0 4px 6px -4px rgba(14, 165, 233, 0.1);
+  --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.3);
+  --shadow-glow-accent: 0 0 30px rgba(249, 115, 22, 0.4);
+}
+
+/* Base style overrides for the SaaS page */
+.saas-theme {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-main);
+}
+
+.saas-theme h1, 
+.saas-theme h2, 
+.saas-theme h3 {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+}

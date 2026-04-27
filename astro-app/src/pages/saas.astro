@@ -1,0 +1,22 @@
+---
+import SaaSLayout from '../layouts/SaaSLayout.astro';
+import Navbar from '../components/SaaS/Navbar';
+import Hero from '../components/SaaS/Hero';
+import Features from '../components/SaaS/Features';
+import Testimonials from '../components/SaaS/Testimonials';
+import Pricing from '../components/SaaS/Pricing';
+import CTASection from '../components/SaaS/CTASection';
+import Footer from '../components/SaaS/Footer';
+---
+
+<SaaSLayout title="Yay SaaS - Everything you need to scale faster">
+	<main class="selection:bg-sky-500 selection:text-white">
+		<Navbar client:load />
+		<Hero client:load />
+		<Features client:visible />
+		<Testimonials client:visible />
+		<Pricing client:visible />
+		<CTASection client:visible />
+		<Footer />
+	</main>
+</SaaSLayout>
