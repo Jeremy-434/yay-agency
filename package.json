@@ -1,6 +1,9 @@
 {
   "name": "yay-company",
   "description": "Minimal Astro site with Sanity Studio",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace=astro-app\" \"npm run dev --workspace=studio\""
   },
