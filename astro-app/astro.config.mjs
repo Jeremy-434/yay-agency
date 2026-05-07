@@ -31,7 +31,7 @@ export default defineConfig({
     sanity({
       projectId,
       dataset,
-      studioBasePath: "/admin",
+      // studioBasePath: "/admin",
       useCdn: false,
       // `false` if you want to ensure fresh data
       apiVersion: "2024-12-08", // Set to date of setup to use the latest API version
