@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invenio Agency — Social Media Assets Preview</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            flex-direction: column;
+            gap: 80px;
+            min-height: auto;
+            padding: 60px 40px;
+            overflow: auto;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            color: var(--cream);
+        }
+
+        .asset-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .label {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid);
+        }
+
+        iframe {
+            border: 1px solid var(--teal);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+        }
+
+        .fb-frame {
+            width: 851px;
+            height: 315px;
+        }
+
+        .ig-frame {
+            width: 648px;
+            height: 648px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invenio — Social Media Assets</h1>
+
+    <div class="asset-group">
+        <span class="label">Facebook Cover — 851 × 315 px</span>
+        <iframe src="facebook-cover.html" class="fb-frame" scrolling="no"></iframe>
+    </div>
+
+    <div class="asset-group">
+        <span class="label">Instagram Post — 1080 × 1080 px (scaled 60%)</span>
+        <iframe src="instagram-post.html" class="ig-frame" scrolling="no" style="transform: scale(1); transform-origin: top center;"></iframe>
+    </div>
+</body>
+</html>

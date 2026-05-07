@@ -3,6 +3,8 @@
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/globals.css';
 import CustomCursor from '../components/CustomCursor';
+import SurveyPopup from '../components/SurveyPopup';
+import ScrollIndicator from '../components/ScrollIndicator';
 
 interface Props {
   title: string;
@@ -21,8 +23,8 @@ const { title } = Astro.props;
     />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
+      type="image/jpeg"
+      href="/logo/Logo Avatar Dark 2.jpg"
     />
     <meta
       name="generator"
@@ -39,12 +41,18 @@ const { title } = Astro.props;
       href="https://fonts.gstatic.com"
       crossorigin
     />
+    <link 
+      rel="stylesheet" 
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" 
+    />
 
     <title>{title}</title>
     <ViewTransitions />
   </head>
   <body class="selection:bg-[var(--color-brand-accent)] selection:text-[var(--color-brand-primary)]">
     <CustomCursor client:load />
+    <SurveyPopup client:load />
+    <ScrollIndicator client:load />
     <div class="app-wrapper">
       <header class="header">
         <div class="header__container">
@@ -104,24 +112,52 @@ const { title } = Astro.props;
     </div>
 
     <script>
-      const toggle = document.querySelector('.mobile-toggle');
-      const nav = document.querySelector('.header__nav');
-      
-      toggle?.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav?.classList.toggle('active');
-        document.body.classList.toggle('overflow-hidden');
-      });
+      function setupInteractions() {
+        const toggle = document.querySelector('.mobile-toggle');
+        
+        // Remove existing listeners to avoid duplicates during view transitions
+        toggle?.replaceWith(toggle.cloneNode(true));
+        const newToggle = document.querySelector('.mobile-toggle');
+        const newNav = document.querySelector('.header__nav');
 
-      // Close menu on link click
-      const navLinks = document.querySelectorAll('.header__nav a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          toggle?.classList.remove('active');
-          nav?.classList.remove('active');
-          document.body.classList.remove('overflow-hidden');
+        newToggle?.addEventListener('click', () => {
+          newToggle.classList.toggle('active');
+          newNav?.classList.toggle('active');
+          document.body.classList.toggle('overflow-hidden');
         });
-      });
+
+        // Close menu on link click
+        const navLinks = document.querySelectorAll('.header__nav a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            newToggle?.classList.remove('active');
+            newNav?.classList.remove('active');
+            document.body.classList.remove('overflow-hidden');
+          });
+        });
+
+        // Global delegation for buttons and CTA links to handle dynamic content
+        document.addEventListener('click', (e) => {
+          const target = (e.target as HTMLElement).closest('button, .nav-cta, .cta-button');
+          if (!target) return;
+          
+          // Skip internal components of the survey itself
+          if (target.closest('.sv-card')) return;
+          if (target.classList.contains('mobile-toggle')) return;
+          
+          // Skip internal navigation anchors that aren't marked as CTAs
+          if (target.tagName === 'A' && !target.classList.contains('nav-cta') && !target.classList.contains('cta-button')) return;
+
+          e.preventDefault();
+          window.dispatchEvent(new CustomEvent('open-survey'));
+        });
+      }
+
+      // Initial setup
+      setupInteractions();
+
+      // Setup on each page load (ViewTransitions support)
+      document.addEventListener('astro:page-load', setupInteractions);
     </script>
   </body>
 </html>
@@ -135,7 +171,6 @@ const { title } = Astro.props;
 
   main {
     flex: 1;
-    padding-top: 70px;
   }
 
   .header {
@@ -240,15 +275,22 @@ const { title } = Astro.props;
     }
 
     & .nav-cta {
-      background: var(--color-brand-accent);
+      background: rgb(89, 131, 146);
       color: var(--color-brand-primary);
       padding: var(--spacing-4) var(--spacing-8);
       border-radius: var(--radius-full);
       font-weight: 700;
       text-align: center;
+      transition: all 0.3s ease;
       @media (min-width: 768px) {
         padding: var(--spacing-2) var(--spacing-5);
         font-weight: 600;
+      }
+
+      &:hover {
+        background: var(--color-brand-cream);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(89, 131, 146, 0.3);
       }
     }
   }

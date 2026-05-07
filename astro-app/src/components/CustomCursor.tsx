@@ -34,53 +34,51 @@ const CustomCursor: React.FC = () => {
       gsap.to([cursor, follower], { scale: 1, duration: 0.3 });
     };
 
-    // Interaction logic
-    const handleLinkHover = (e: MouseEvent) => {
-      const target = e.currentTarget as HTMLElement;
-      gsap.to(follower, {
-        scale: 2.5,
-        backgroundColor: 'rgba(174, 195, 176, 0.2)',
-        borderColor: 'transparent',
-        duration: 0.3,
-      });
-      gsap.to(cursor, {
-        scale: 0,
-        duration: 0.2,
-      });
+    // Event delegation for hover states
+    const onMouseOver = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('a, button, .cursor-hover');
+      if (target) {
+        gsap.to(follower, {
+          scale: 2.5,
+          backgroundColor: 'rgba(174, 195, 176, 0.2)',
+          borderColor: 'transparent',
+          duration: 0.3,
+        });
+        gsap.to(cursor, {
+          scale: 0,
+          duration: 0.2,
+        });
+      }
     };
 
-    const handleLinkLeave = () => {
-      gsap.to(follower, {
-        scale: 1,
-        backgroundColor: 'transparent',
-        borderColor: 'var(--color-brand-sage)',
-        duration: 0.3,
-      });
-      gsap.to(cursor, {
-        scale: 1,
-        duration: 0.2,
-      });
+    const onMouseOut = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('a, button, .cursor-hover');
+      if (target) {
+        gsap.to(follower, {
+          scale: 1,
+          backgroundColor: 'transparent',
+          borderColor: 'var(--color-brand-sage)',
+          duration: 0.3,
+        });
+        gsap.to(cursor, {
+          scale: 1,
+          duration: 0.2,
+        });
+      }
     };
 
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mouseup', onMouseUp);
-
-    // Attach to all interactive elements
-    const links = document.querySelectorAll('a, button, .cursor-hover');
-    links.forEach((link) => {
-      link.addEventListener('mouseenter', handleLinkHover as any);
-      link.addEventListener('mouseleave', handleLinkLeave);
-    });
+    window.addEventListener('mouseover', onMouseOver);
+    window.addEventListener('mouseout', onMouseOut);
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mouseup', onMouseUp);
-      links.forEach((link) => {
-        link.removeEventListener('mouseenter', handleLinkHover as any);
-        link.removeEventListener('mouseleave', handleLinkLeave);
-      });
+      window.removeEventListener('mouseover', onMouseOver);
+      window.removeEventListener('mouseout', onMouseOut);
     };
   }, []);
 
@@ -88,11 +86,11 @@ const CustomCursor: React.FC = () => {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-[var(--color-brand-sage)] rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 bg-[var(--color-brand-sage)] rounded-full pointer-events-none z-[100000] -translate-x-1/2 -translate-y-1/2 mix-blend-difference hidden md:block"
       />
       <div
         ref={followerRef}
-        className="fixed top-0 left-0 w-10 h-10 border border-[var(--color-brand-sage)] rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 hidden md:block opacity-50"
+        className="fixed top-0 left-0 w-10 h-10 border border-[var(--color-brand-sage)] rounded-full pointer-events-none z-[99999] -translate-x-1/2 -translate-y-1/2 hidden md:block opacity-50"
       />
     </>
   );

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invenio Agency — Facebook Cover</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Facebook Cover: 851 × 315 px */
+        .canvas {
+            width: 851px;
+            height: 315px;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 64px;
+            gap: 40px;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cream);
+            line-height: 1;
+            margin: 0;
+        }
+
+        .tagline {
+            font-family: 'Crimson Pro', serif;
+            font-size: 18px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--sage);
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        /* Right-side year label */
+        .year-label {
+            position: absolute;
+            right: 56px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            font-family: 'Crimson Pro', serif;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--sage);
+            opacity: 0.5;
+        }
+
+        .orb-1 {
+            width: 350px;
+            height: 350px;
+            background: var(--teal);
+            right: -80px;
+            top: -140px;
+        }
+        .orb-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--mid);
+            left: 30%;
+            bottom: -100px;
+            opacity: 0.12;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <!-- Diagonal stripe bg -->
+        <div class="stripe-bg"></div>
+
+        <!-- Orbs -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <!-- Content -->
+        <div class="cover-content">
+            <!-- Actual Invenio Logo from astro-app/public/logo -->
+            <img class="logo-img" src="../astro-app/public/logo/Invenio Logo Vector Light 1.svg" alt="Invenio Logo" />
+
+            <div class="text-block">
+                <h1 class="brand-name">Invenio</h1>
+                <p class="tagline">Del descubrimiento al cierre, sin fricción.</p>
+            </div>
+        </div>
+
+        <!-- Year -->
+        <span class="year-label">2026</span>
+
+        <!-- Bottom accent bar -->
+        <div class="accent-bar"></div>
+    </div>
+</body>
+</html>

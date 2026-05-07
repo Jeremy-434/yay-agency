@@ -4,8 +4,6 @@
  */
 
 @import 'tailwindcss';
-@import './aether-theme.css';
-@import './saas-theme.css';
 
 /* Local Fonts - Crimson Pro */
 @font-face {
@@ -24,13 +22,58 @@
   font-display: swap;
 }
 
+/* Local Fonts - Noto Sans Display */
+@font-face {
+  font-family: 'Noto Sans Display';
+  src: url('/Noto_Sans_Display/NotoSansDisplay-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans Display';
+  src: url('/Noto_Sans_Display/NotoSansDisplay-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Google Fonts - Invenio Brand Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
 
 @theme {
   /* ============================================
-     COLOR SYSTEM - Invenio Brand Palette
+     COLOR SYSTEM - Integrated Brand & Aether Palette
      ============================================ */
+
+  /* AETHER MOTION THEME TOKENS */
+  --color-aether-background: #01161E; /* Navy */
+  --color-aether-on-background: #EFF6E0; /* Cream */
+  --color-aether-surface: #01161E;
+  --color-aether-on-surface: #EFF6E0;
+  --color-aether-primary: #598392; /* Ocean */
+  --color-aether-on-primary: #01161E; /* Navy */
+  --color-aether-primary-container: #124559; /* Teal */
+  --color-aether-on-primary-container: #EFF6E0;
+  --color-aether-secondary: #AEC3B0; /* Sage */
+  --color-aether-on-secondary: #01161E;
+  --color-aether-tertiary: #124559;
+  --color-aether-on-tertiary: #EFF6E0;
+  --color-aether-surface-variant: #124559;
+  --color-aether-on-surface-variant: #AEC3B0;
+  --color-aether-outline: #598392;
+  --color-aether-surface-tint: #598392;
+  --color-aether-surface-container-lowest: #000B0F;
+  --color-aether-surface-container-low: #01161E;
+  --color-aether-surface-container: #0A242E;
+  --color-aether-surface-container-high: #124559;
+  --color-aether-surface-container-highest: #1A5269;
+  --color-aether-error: #FFB4AB;
+  --color-aether-on-error: #690005;
+
+  /* Custom Utilities */
+  --shadow-glow-aether: 0 0 30px rgba(89, 131, 146, 0.3);
 
   /* Brand Colors */
   --color-brand-primary: #01161E;
@@ -76,9 +119,18 @@
      TYPOGRAPHY
      ============================================ */
 
-  --font-family-main: 'Crimson Pro', serif;
-  --font-family-display: 'Cormorant Garamond', serif;
+  --font-family-main: 'Noto Sans Display', sans-serif;
+  --font-family-display: 'Crimson Pro', serif;
   --font-family-mono: 'JetBrains Mono', monospace;
+
+  /* Z-Index Scale */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 1000;
+  --z-overlay: 9000;
+  --z-modal: 9999;
 
   /* Font Sizes - Fluid Typography */
   --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -193,6 +245,11 @@
     text-wrap: pretty;
     /* Better for mobile readability */
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-display);
+    font-weight: 700;
+  }
 }
 
 @layer utilities {
@@ -213,22 +270,13 @@
   }
 }
 
-/* Sophisticated scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Hide native scrollbar — custom dot nav is used instead */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-brand-secondary);
-  border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-accent);
+html::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -249,5 +297,23 @@
     background: var(--color-bg-glass);
     backdrop-filter: blur(var(--blur-md));
     border: 1px solid rgba(174, 195, 176, 0.1);
+  }
+
+  .glass-panel {
+    background: rgba(1, 22, 30, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .text-gradient-aether {
+    background-image: linear-gradient(135deg, #598392 0%, #AEC3B0 50%, #EFF6E0 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    display: inline-block;
   }
 }

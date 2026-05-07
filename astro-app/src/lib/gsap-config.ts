@@ -6,11 +6,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useGSAP } from '@gsap/react';
 
 // Client-side only registration (SSR safety)
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
+  gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin, useGSAP);
   
   // Set global defaults
   gsap.defaults({
@@ -26,7 +27,7 @@ if (typeof window !== 'undefined') {
 }
 
 // Export configured instances
-export { gsap, ScrollTrigger, SplitText, useGSAP };
+export { gsap, ScrollTrigger, SplitText, ScrollToPlugin, useGSAP };
 
 // Custom easing curves matching CSS variables
 export const easings = {

@@ -1,46 +1,34 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "@features/hero/Hero.tsx";
-import InvenioServices from "../components/Aether/Services.tsx";
-import { getPosts } from "../utils/sanity";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import Portfolio from '../components/Portfolio';
+import Services from '../components/Services';
 
-const posts = await getPosts();
+import '../styles/globals.css';
 ---
 
 <Layout title="Invenio Agency — Automatización Inteligente & Funnels de Venta">
   <!-- Hero Section -->
-  <Hero 
-    client:load
-    title="Invenio"
-    subtitle="Tu mejor vendedor nunca duerme. Construimos sistemas de IA que convierten leads en clientes mientras tú descansas."
-    ctaText="Optimiza tu Funnel"
-    ctaHref="#contacto"
-  />
-
-  <!-- Mission Statement / Essence -->
-  <section class="mission-section">
-    <div class="container-custom">
-      <p class="mission-eyebrow">Nuestra Misión</p>
-      <h2 class="mission-title">
-        Acompañamos al cliente potencial en todo el proceso — desde la búsqueda hasta la venta formalizada — a través de <span>automatización inteligente</span> y agentes de IA.
-      </h2>
-    </div>
+  <section id="hero" style="margin: 0; padding: 0;">
+    <Hero 
+      client:load 
+      title="Invenio Agency <br /> En Movimiento"
+    />
   </section>
 
   <!-- Services Section -->
-  <section id="servicios" class="section-padding">
-    <InvenioServices client:visible />
+  <section id="servicios">
+    <Services client:visible />
   </section>
 
-  <!-- Strata Process Section (The Funnel) -->
-  <section id="proceso" class="process-section section-padding">
+  <!-- Process / Portfolio Section -->
+  <section id="proceso" class="process-section">
     <div class="container-custom">
       <div class="process-header">
         <span class="process-num">03</span>
         <div class="process-title-block">
           <p class="process-eyebrow">Metodología</p>
-          <h2 class="process-heading">El Sistema Strata</h2>
+          <h2 class="process-heading">El Sistema Invenio</h2>
         </div>
       </div>
 
@@ -70,17 +58,10 @@ const posts = await getPosts();
     </div>
   </section>
 
-  <!-- Portfolio/Success Stories -->
-  {posts.length > 0 && (
-    <section id="casos" class="portfolio-section section-padding">
-      <div class="container-custom">
-        <h2 class="section-title">Casos de Éxito</h2>
-        <div class="portfolio-grid">
-          {posts.map((post) => <Card post={post} />)}
-        </div>
-      </div>
-    </section>
-  )}
+  <!-- Portfolio -->
+  <section id="casos">
+    <Portfolio client:visible />
+  </section>
 
   <!-- Contact / CTA -->
   <section id="contacto" class="cta-section section-padding">
@@ -88,43 +69,35 @@ const posts = await getPosts();
       <div class="cta-card">
         <h2 class="cta-title">¿Listo para escalar sin fricción?</h2>
         <p class="cta-text">Hablemos sobre cómo podemos automatizar tu proceso de ventas hoy mismo.</p>
-        <a href="mailto:hola@inveniagency.com" class="cta-button">Agendar Consultoría →</a>
+        <button class="cta-button">Agendar Consultoría →</button>
       </div>
     </div>
   </section>
 </Layout>
 
-<style>
-  /* Mission Section */
-  .mission-section {
-    padding-block: var(--fluid-80-120);
-    background: var(--color-bg-dark);
-    text-align: center;
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
   }
-  .mission-eyebrow {
-    font-size: var(--font-size-xs);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-extrawide);
-    color: var(--color-brand-accent);
-    margin-bottom: var(--spacing-6);
-  }
-  .mission-title {
-    font-family: var(--font-family-display);
-    font-size: clamp(1.75rem, 1rem + 4vw, 3rem);
-    line-height: var(--line-height-tight);
-    color: var(--color-text-primary);
-    font-weight: 300;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .mission-title span {
-    color: var(--color-brand-sage);
-    font-style: italic;
-  }
+</style>
 
+<style>
   /* Process Section */
   .process-section {
     background: var(--color-bg-darker);
+    padding-block: var(--fluid-40-80);
+    padding-inline: var(--spacing-6);
+  }
+  @media (min-width: 768px) {
+    .process-section { padding-inline: var(--spacing-12); }
   }
   .process-header {
     display: flex;
@@ -156,7 +129,9 @@ const posts = await getPosts();
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-12);
-    @media (min-width: 768px) {
+  }
+  @media (min-width: 768px) {
+    .strata-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: var(--spacing-8);
     }
@@ -173,7 +148,6 @@ const posts = await getPosts();
   .strata-1 { background: var(--color-brand-secondary); width: 100%; }
   .strata-2 { background: var(--color-brand-accent); width: 80%; }
   .strata-3 { background: var(--color-brand-sage); width: 60%; }
-  
   .strata-content h3 {
     font-family: var(--font-family-display);
     font-size: var(--font-size-xl);
@@ -184,23 +158,6 @@ const posts = await getPosts();
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
     line-height: var(--line-height-normal);
-  }
-
-  /* Portfolio Section */
-  .section-title {
-    font-family: var(--font-family-display);
-    font-size: var(--font-size-3xl);
-    color: var(--color-brand-cream);
-    margin-bottom: var(--fluid-40-80);
-    text-align: center;
-  }
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-10);
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    }
   }
 
   /* CTA Section */
@@ -230,19 +187,21 @@ const posts = await getPosts();
   }
   .cta-button {
     display: inline-block;
-    background: var(--color-brand-cream);
+    background: var(--color-brand-accent);
     color: var(--color-brand-primary);
     padding: var(--spacing-5) var(--spacing-12);
     border-radius: var(--radius-full);
     font-size: var(--font-size-base);
     font-weight: 700;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family-main);
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(1, 22, 30, 0.4);
-      background: var(--color-brand-accent);
-    }
+  }
+  .cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(89, 131, 146, 0.4);
+    background: var(--color-brand-cream);
   }
 </style>
