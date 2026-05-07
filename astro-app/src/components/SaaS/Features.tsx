@@ -3,17 +3,17 @@ import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap-config';
 
 const features = [
   {
-    title: 'Project Management',
-    description: 'Keep your tasks organized and your team on track with intuitive boards and timelines.',
+    title: 'Agentes de IA',
+    description: 'Sistemas inteligentes que califican leads y cierran ventas 24/7 sin intervención humana.',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
   },
   {
-    title: 'Workflow Automation',
-    description: 'Automate repetitive tasks and focus on what matters most. No coding required.',
+    title: 'Automatización CRM',
+    description: 'Gestión inteligente de contactos y seguimiento automatizado para que ningún lead se pierda.',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -21,8 +21,17 @@ const features = [
     ),
   },
   {
-    title: 'Real-time Analytics',
-    description: 'Track your progress and make data-driven decisions with powerful reporting tools.',
+    title: 'Funnels de Venta',
+    description: 'Diseñamos el camino del prospecto desde el descubrimiento hasta la conversión final.',
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Performance Marketing',
+    description: 'Campañas optimizadas para maximizar el retorno de inversión y reducir el costo por lead.',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
@@ -30,29 +39,20 @@ const features = [
     ),
   },
   {
-    title: 'Team Collaboration',
-    description: 'Communicate and collaborate seamlessly with integrated chat and file sharing.',
+    title: 'Reportes en Tiempo Real',
+    description: 'Visualiza el rendimiento de tus campañas y la eficiencia de tu funnel al instante.',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
   },
   {
-    title: 'Secure by Design',
-    description: 'Enterprise-grade security to keep your data safe and compliant with industry standards.',
+    title: 'Escalabilidad con IA',
+    description: 'Crece tu negocio sin aumentar proporcionalmente tu equipo operativo.',
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Seamless Integrations',
-    description: 'Connect with the tools you already use, from Slack to Google Drive.',
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
     ),
   },
@@ -81,14 +81,14 @@ const Features: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="features" ref={containerRef} className="py-24 px-6 bg-white relative overflow-hidden">
+    <section id="features" ref={containerRef} className="py-24 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-black tracking-tight text-[var(--color-text-primary)] sm:text-5xl font-display">
-            Built for modern teams
+            Construido para el crecimiento real
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-[var(--color-text-secondary)]">
-            Yay SaaS provides all the tools you need to build, scale, and manage your business without the complexity.
+            Invenio Agency proporciona las herramientas necesarias para escalar y gestionar tu negocio sin la complejidad operativa.
           </p>
         </div>
 

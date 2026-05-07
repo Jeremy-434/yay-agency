@@ -1,0 +1,1043 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invenio Agency — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #01161E;
+    --teal:   #124559;
+    --mid:    #598392;
+    --sage:   #AEC3B0;
+    --cream:  #EFF6E0;
+    --serif:  'Cormorant Garamond', serif;
+    --sans:   'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { background: #f0ede6; font-family: var(--sans); color: var(--navy); }
+
+  /* PAGE WRAPPER */
+  .page {
+    width: 900px;
+    margin: 40px auto;
+    background: var(--cream);
+    box-shadow: 0 8px 60px rgba(1,22,30,0.18);
+    overflow: hidden;
+  }
+
+  /* ── COVER ─────────────────────────────────────────── */
+  .cover {
+    background: var(--navy);
+    height: 1100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 80px 80px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background: 
+      repeating-linear-gradient(
+        -45deg,
+        var(--mid) 0px, var(--mid) 1px,
+        transparent 1px, transparent 48px
+      );
+  }
+  .cover-top { display: flex; align-items: flex-start; justify-content: space-between; }
+  .cover-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .cover-year {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--sage);
+    opacity: 0.6;
+  }
+  .cover-center {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-mark { margin-bottom: 48px; }
+  .cover-title {
+    font-family: var(--serif);
+    font-size: 88px;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .cover-subtitle {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-tagline {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--sage);
+    max-width: 320px;
+    line-height: 1.5;
+  }
+  .cover-version {
+    font-size: 11px;
+    color: var(--mid);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SECTION DIVIDERS ───────────────────────────────── */
+  .section-header {
+    background: var(--teal);
+    padding: 52px 80px 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .section-header.light { background: var(--cream); border-top: 1px solid rgba(1,22,30,0.08); }
+  .section-num {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(255,255,255,0.15);
+  }
+  .section-num.dark { color: rgba(1,22,30,0.08); }
+  .section-title-block { text-align: right; }
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+  .section-eyebrow.dark { color: var(--mid); }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .section-heading.dark { color: var(--navy); }
+
+  /* ── CONTENT BLOCKS ────────────────────────────────── */
+  .content { padding: 72px 80px; }
+  .content.dark { background: var(--navy); }
+  .content.mid { background: var(--teal); }
+  .content.sage { background: var(--sage); }
+  .content.tight { padding: 48px 80px; }
+
+  /* ── BRAND ESSENCE ──────────────────────────────────── */
+  .essence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  .essence-mission {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid rgba(1,22,30,0.1);
+    padding-bottom: 52px;
+    margin-bottom: 4px;
+  }
+  .essence-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+  .essence-mission p {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--navy);
+    max-width: 640px;
+  }
+  .value-item { }
+  .value-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .value-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--navy);
+    opacity: 0.7;
+    line-height: 1.65;
+  }
+
+  /* ── LOGO DIRECTIONS ───────────────────────────────── */
+  .logo-direction {
+    padding: 72px 80px;
+    border-bottom: 1px solid rgba(1,22,30,0.08);
+  }
+  .logo-direction:last-child { border-bottom: none; }
+  .logo-direction.dark-bg { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .logo-dir-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 56px;
+  }
+  .logo-dir-num {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+  }
+  .logo-dir-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .logo-dir-name.light { color: var(--cream); }
+  .logo-dir-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--navy);
+    opacity: 0.6;
+    max-width: 280px;
+    line-height: 1.6;
+    text-align: right;
+  }
+  .logo-dir-desc.light { color: var(--cream); opacity: 0.5; }
+  .logo-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .logo-panel {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    min-height: 240px;
+  }
+  .logo-panel.on-light { background: var(--cream); }
+  .logo-panel.on-dark { background: var(--navy); }
+  .logo-panel.on-mid { background: var(--teal); }
+  .logo-panel.on-sage { background: var(--sage); }
+  .logo-wordmark {
+    font-family: var(--serif);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .logo-wordmark-sans {
+    font-family: var(--sans);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* ── COLOR PALETTE ──────────────────────────────────── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+  .color-swatch {
+    aspect-ratio: 1 / 1.3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 18px;
+  }
+  .color-name {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .color-hex {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+  .color-usage {
+    margin-top: 6px;
+    font-size: 10px;
+    opacity: 0.5;
+    line-height: 1.4;
+  }
+  .color-details {
+    padding: 48px 80px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+  .color-detail-item { }
+  .color-detail-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .color-detail-vals {
+    font-size: 11px;
+    color: var(--navy);
+    opacity: 0.5;
+    line-height: 1.8;
+    font-family: monospace;
+  }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────── */
+  .type-specimen-display {
+    padding: 80px;
+    background: var(--navy);
+  }
+  .type-specimen-display p {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .type-specimen-display p em {
+    font-style: italic;
+    color: var(--sage);
+  }
+  .type-row {
+    padding: 40px 80px;
+    border-bottom: 1px solid rgba(1,22,30,0.08);
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta {
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+  .type-meta-name {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 4px;
+  }
+  .type-meta-spec {
+    font-size: 11px;
+    color: var(--navy);
+    opacity: 0.4;
+    font-family: monospace;
+  }
+  .type-sample { flex: 1; }
+
+  /* ── VOICE ──────────────────────────────────────────── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .voice-cell {
+    padding: 48px 52px;
+    background: var(--cream);
+  }
+  .voice-cell.accent { background: var(--teal); }
+  .voice-cell-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+  .voice-cell.accent .voice-cell-label { color: var(--sage); }
+  .voice-cell-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .voice-cell.accent .voice-cell-title { color: var(--cream); }
+  .voice-cell-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--navy);
+    opacity: 0.65;
+  }
+  .voice-cell.accent .voice-cell-body { color: var(--cream); opacity: 0.7; }
+  .voice-example {
+    padding: 56px 80px;
+    background: var(--navy);
+  }
+  .voice-example-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 32px;
+  }
+  .voice-example-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .voice-ex-item {}
+  .voice-ex-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .voice-ex-tag.yes { color: var(--sage); }
+  .voice-ex-tag.no { color: #c07070; }
+  .voice-ex-text {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--cream);
+  }
+  .voice-ex-text.no { opacity: 0.35; text-decoration: line-through; }
+
+  /* ── APPLICATIONS ───────────────────────────────────── */
+  .app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .app-card {
+    background: var(--navy);
+    padding: 52px 48px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .app-card.light { background: var(--cream); }
+  .app-card.sage-bg { background: var(--sage); }
+  .app-card-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 28px;
+  }
+  .app-card.light .app-card-label { color: var(--mid); }
+
+  /* Business card mockup */
+  .biz-card {
+    background: var(--teal);
+    padding: 28px 32px;
+    aspect-ratio: 1.75 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .biz-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--cream);
+    font-weight: 400;
+  }
+  .biz-role {
+    font-size: 9px;
+    color: var(--sage);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .biz-contact {
+    font-size: 9px;
+    color: var(--cream);
+    opacity: 0.5;
+    line-height: 1.8;
+  }
+
+  /* Email header mockup */
+  .email-header {
+    background: var(--navy);
+    padding: 24px 28px;
+    border-left: 3px solid var(--mid);
+  }
+  .email-from {
+    font-size: 11px;
+    color: var(--sage);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .email-subject {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .email-body {
+    font-size: 12px;
+    color: var(--cream);
+    opacity: 0.5;
+    line-height: 1.6;
+  }
+
+  /* Social post mockup */
+  .social-post {
+    background: var(--teal);
+    padding: 32px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .social-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .social-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .social-handle {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+  .social-headline {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .social-tag {
+    font-size: 11px;
+    color: var(--sage);
+    opacity: 0.8;
+  }
+
+  /* ── BACK COVER ─────────────────────────────────────── */
+  .back-cover {
+    background: var(--navy);
+    padding: 80px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    border-top: 1px solid rgba(89,131,146,0.2);
+  }
+  .back-cover p {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .back-cover span {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; width: 100%; }
+  }
+</style>
+</head>
+<body style="">
+
+<div class="page">
+
+  <!-- ══ 01 COVER ══ -->
+  <section class="cover">
+    <div class="cover-bg"></div>
+    <div class="cover-top">
+      <span class="cover-label">Guía de Marca</span>
+      <span class="cover-year">2026</span>
+    </div>
+    <div class="cover-center">
+      <div class="cover-mark">
+        <!-- Funnel mark — Direction A preview on cover -->
+        <svg width="64" height="56" viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="64" height="16" rx="3" fill="#598392" style="fill: rgb(239, 246, 224);"></rect>
+          <rect x="10" y="22" width="44" height="14" rx="3" fill="#AEC3B0" opacity="0.7" style="fill: rgb(239, 246, 224);"></rect>
+          <rect x="22" y="42" width="20" height="14" rx="3" fill="#EFF6E0" opacity="0.4" style="fill: rgb(239, 246, 224);"></rect>
+        </svg>
+      </div>
+      <h1 class="cover-title">Invenio</h1>
+      <p class="cover-subtitle">Agency</p>
+    </div>
+    <div class="cover-bottom">
+      <p class="cover-tagline">Del descubrimiento<br>al cierre, sin fricción.</p>
+      <span class="cover-version">v1.0 — Confidencial</span>
+    </div>
+  </section>
+
+  <!-- ══ 02 BRAND ESSENCE ══ -->
+  <div class="section-header light">
+    <span class="section-num dark">02</span>
+    <div class="section-title-block">
+      <p class="section-eyebrow dark">Fundamentos</p>
+      <h2 class="section-heading dark">Esencia de Marca</h2>
+    </div>
+  </div>
+  <div class="content">
+    <div class="essence-grid">
+      <div class="essence-mission">
+        <p class="essence-label">Misión</p>
+        <p>Acompañamos al cliente potencial en todo el proceso — desde la búsqueda hasta la venta formalizada — a traves de automatización inteligente, agentes de IA y los sistemas de rendimiento que funcionan mientras duermes.</p>
+      </div>
+      <div class="value-item">
+        <p class="value-name">Rapidez</p>
+        <p class="value-desc">La velocidad es nuestra ventaja competitiva. Lanzamos rápido, iteramos rápido y ayudamos a nuestros clientes a capturar leads antes de que la competencia reaccione.</p>
+      </div>
+      <div class="value-item">
+        <p class="value-name">Eficiencia</p>
+        <p class="value-desc">Cada punto de contacto está optimizado. Sin gasto desperdiciado, sin pasos innecesarios — solo un camino limpio y automatizado del interés a la conversión.</p>
+      </div>
+      <div class="value-item">
+        <p class="value-name">Profesionalismo</p>
+        <p class="value-desc">Llegamos con precisión: entregables claros, creatividad afilada y sistemas construidos para rendir bajo presión real de negocio.</p>
+      </div>
+      <div class="value-item">
+        <p class="value-name">Tecnología de punta</p>
+        <p class="value-desc">Agentes de IA, chatbots, automatización de CRM (GoHighLevel), producción de video con IA — usamos las herramientas más avanzadas para que nuestros clientes no tengan que preocuparse por ellas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 03 LOGO — DIRECTION A ══ -->
+  <div class="section-header">
+    <span class="section-num" style="">03</span>
+    <div class="section-title-block">
+      <p class="section-eyebrow">Identidad</p>
+      <h2 class="section-heading" style="">Sistema de Logo</h2>
+    </div>
+  </div>
+
+  <!-- Direction A -->
+  <div class="logo-direction">
+    <div class="logo-dir-header">
+      <span class="logo-dir-num">Direction A</span>
+      <div style="text-align:right">
+        <p class="logo-dir-name">Strata</p>
+        <p class="logo-dir-desc">Barras apiladas representan las etapas del funnel. Estructurado, basado en datos y accesible. Cada capa se aclara conforme el prospecto avanza hacia la conversión.</p>
+      </div>
+    </div>
+    <div class="logo-showcase">
+      <div class="logo-panel on-light">
+        <svg width="52" height="46" viewBox="0 0 64 56" fill="none">
+          <rect x="0" y="0" width="64" height="16" rx="3" fill="#124559"></rect>
+          <rect x="10" y="22" width="44" height="14" rx="3" fill="#598392"></rect>
+          <rect x="22" y="42" width="20" height="14" rx="3" fill="#AEC3B0"></rect>
+        </svg>
+        <div class="logo-wordmark" style="font-size:28px; color:var(--navy); font-weight:400; letter-spacing:0.1em;">INVENIO</div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);">AGENCY</div>
+      </div>
+      <div class="logo-panel on-dark">
+        <svg width="52" height="46" viewBox="0 0 64 56" fill="none">
+          <rect x="0" y="0" width="64" height="16" rx="3" fill="#598392"></rect>
+          <rect x="10" y="22" width="44" height="14" rx="3" fill="#AEC3B0" opacity="0.7"></rect>
+          <rect x="22" y="42" width="20" height="14" rx="3" fill="#EFF6E0" opacity="0.45"></rect>
+        </svg>
+        <div class="logo-wordmark" style="font-size:28px; color:var(--cream); font-weight:400; letter-spacing:0.1em;">INVENIO</div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);">AGENCY</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction B -->
+  <div class="logo-direction">
+    <div class="logo-dir-header">
+      <span class="logo-dir-num">Direction B</span>
+      <div style="text-align:right">
+        <p class="logo-dir-name">Conduit</p>
+        <p class="logo-dir-desc">Una silueta de funnel clásica — audaz, icónica e inmediatamente reconocible. Se combina con un wordmark serif elegante estilo Grenette para una sensación premium.</p>
+      </div>
+    </div>
+    <div class="logo-showcase">
+      <div class="logo-panel on-cream" style="background:var(--cream);">
+        <svg width="44" height="64" viewBox="0 0 56 76" fill="none">
+          <path d="M0 4 Q0 0 4 0 L52 0 Q56 0 56 4 L38 48 Q37 52 32 52 L24 52 Q19 52 18 48 Z" fill="#124559"></path>
+          <rect x="22" y="56" width="12" height="20" rx="4" fill="#598392"></rect>
+        </svg>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="logo-wordmark" style="font-size:32px; color:var(--navy); font-weight:300; letter-spacing:0.08em;">Invenio</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mid);">AGENCY</div>
+        </div>
+      </div>
+      <div class="logo-panel on-dark">
+        <svg width="44" height="64" viewBox="0 0 56 76" fill="none">
+          <path d="M0 4 Q0 0 4 0 L52 0 Q56 0 56 4 L38 48 Q37 52 32 52 L24 52 Q19 52 18 48 Z" fill="#EFF6E0"></path>
+          <rect x="22" y="56" width="12" height="20" rx="4" fill="#AEC3B0"></rect>
+        </svg>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="logo-wordmark" style="font-size:32px; color:var(--cream); font-weight:300; letter-spacing:0.08em;">Invenio</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--sage);">AGENCY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction C -->
+  <div class="logo-direction dark-bg">
+    <div class="logo-dir-header">
+      <span class="logo-dir-num" style="color:var(--mid);">Direction C</span>
+      <div style="text-align:right">
+        <p class="logo-dir-name light">Flow</p>
+        <p class="logo-dir-desc light">Líneas convergentes sugieren movimiento, leads fluyendo hacia un punto central. Dinámico y tecnológico — ideal para contextos digitales. Wordmark limpio en sans-serif.</p>
+      </div>
+    </div>
+    <div class="logo-showcase">
+      <div class="logo-panel on-dark">
+        <svg width="64" height="64" viewBox="0 0 72 72" fill="none">
+          <circle cx="12" cy="12" r="8" fill="#598392" opacity="0.4"></circle>
+          <circle cx="36" cy="12" r="8" fill="#598392" opacity="0.65"></circle>
+          <circle cx="60" cy="12" r="8" fill="#598392" opacity="0.9"></circle>
+          <line x1="12" y1="20" x2="36" y2="58" stroke="#AEC3B0" stroke-width="1.5" stroke-linecap="round"></line>
+          <line x1="36" y1="20" x2="36" y2="58" stroke="#AEC3B0" stroke-width="1.5" stroke-linecap="round"></line>
+          <line x1="60" y1="20" x2="36" y2="58" stroke="#AEC3B0" stroke-width="1.5" stroke-linecap="round"></line>
+          <circle cx="36" cy="64" r="8" fill="#EFF6E0"></circle>
+        </svg>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="logo-wordmark-sans" style="font-size:28px; color:var(--cream); font-weight:300;">INVENIO</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mid);">AGENCY</div>
+        </div>
+      </div>
+      <div class="logo-panel on-mid">
+        <svg width="64" height="64" viewBox="0 0 72 72" fill="none">
+          <circle cx="12" cy="12" r="8" fill="#EFF6E0" opacity="0.25"></circle>
+          <circle cx="36" cy="12" r="8" fill="#EFF6E0" opacity="0.5"></circle>
+          <circle cx="60" cy="12" r="8" fill="#EFF6E0" opacity="0.75"></circle>
+          <line x1="12" y1="20" x2="36" y2="58" stroke="#EFF6E0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"></line>
+          <line x1="36" y1="20" x2="36" y2="58" stroke="#EFF6E0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"></line>
+          <line x1="60" y1="20" x2="36" y2="58" stroke="#EFF6E0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"></line>
+          <circle cx="36" cy="64" r="8" fill="#EFF6E0"></circle>
+        </svg>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div class="logo-wordmark-sans" style="font-size:28px; color:var(--cream); font-weight:300;">INVENIO</div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--sage);opacity:0.7;">AGENCY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 04 COLOR PALETTE ══ -->
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <div class="section-title-block">
+      <p class="section-eyebrow">Identidad</p>
+      <h2 class="section-heading">Paleta de Colores</h2>
+    </div>
+  </div>
+  <div class="color-grid">
+    <div class="color-swatch" style="background:var(--navy);">
+      <p class="color-name" style="color: rgb(239, 246, 224)">Deep Navy</p>
+      <p class="color-hex" style="color: rgb(239, 246, 224)">#01161E</p>
+      <p class="color-usage" style="color: rgb(239, 246, 224)">Fondo principal · Texto oscuro</p>
+    </div>
+    <div class="color-swatch" style="background:var(--teal);">
+      <p class="color-name" style="color:var(--sage);">Dark Teal</p>
+      <p class="color-hex" style="color:var(--sage);">#124559</p>
+      <p class="color-usage" style="color:var(--sage);">Superficies secundarias · Títulos</p>
+    </div>
+    <div class="color-swatch" style="background:var(--mid);">
+      <p class="color-name" style="color:var(--cream);">Ocean</p>
+      <p class="color-hex" style="color:var(--cream);">#598392</p>
+      <p class="color-usage" style="color:var(--cream);">Acento · Interactivo</p>
+    </div>
+    <div class="color-swatch" style="background:var(--sage);">
+      <p class="color-name" style="color:var(--navy);">Sage</p>
+      <p class="color-hex" style="color:var(--navy);">#AEC3B0</p>
+      <p class="color-usage" style="color:var(--navy);">Acento suave · Divisores</p>
+    </div>
+    <div class="color-swatch" style="background:var(--cream); border:1px solid rgba(1,22,30,0.06);">
+      <p class="color-name" style="color:var(--teal);">Cream</p>
+      <p class="color-hex" style="color:var(--teal);">#EFF6E0</p>
+      <p class="color-usage" style="color:var(--teal);">Fondo claro · Texto cuerpo</p>
+    </div>
+  </div>
+  <div class="color-details">
+    <div class="color-detail-item">
+      <p class="color-detail-name">Deep Navy</p>
+      <p class="color-detail-vals">HEX #01161E<br>R1 G22 B30<br>Principal</p>
+    </div>
+    <div class="color-detail-item">
+      <p class="color-detail-name">Dark Teal</p>
+      <p class="color-detail-vals">HEX #124559<br>R18 G69 B89<br>Secundario</p>
+    </div>
+    <div class="color-detail-item">
+      <p class="color-detail-name">Ocean</p>
+      <p class="color-detail-vals">HEX #598392<br>R89 G131 B146<br>Acento</p>
+    </div>
+    <div class="color-detail-item">
+      <p class="color-detail-name">Sage</p>
+      <p class="color-detail-vals">HEX #AEC3B0<br>R174 G195 B176<br>Suave</p>
+    </div>
+    <div class="color-detail-item">
+      <p class="color-detail-name">Cream</p>
+      <p class="color-detail-vals">HEX #EFF6E0<br>R239 G246 B224<br>Fondo</p>
+    </div>
+  </div>
+
+  <!-- ══ 05 TYPOGRAPHY ══ -->
+  <div class="section-header light">
+    <span class="section-num dark">05</span>
+    <div class="section-title-block">
+      <p class="section-eyebrow dark">Identidad</p>
+      <h2 class="section-heading dark">Tipografía</h2>
+    </div>
+  </div>
+  <div class="type-specimen-display">
+    <p>Del lead al cierre,<br><em>sin fricción.</em></p>
+  </div>
+  <div style="padding: 0 0 0 0;">
+    <div class="type-row">
+      <div class="type-meta">
+        <p class="type-meta-name">Display</p>
+        <p class="type-meta-spec">Grenette · 300–500<br>Títulos, Citas destacadas</p>
+      </div>
+      <div class="type-sample">
+        <p style="font-family: var(--serif); font-size: 52px; font-weight: 300; color: var(--navy); line-height: 1;">Invenio Agency</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <p class="type-meta-name">Display Itálica</p>
+        <p class="type-meta-spec">Grenette · 300 Itálica<br>Énfasis, Citas</p>
+      </div>
+      <div class="type-sample">
+        <p style="font-family: var(--serif); font-size: 40px; font-weight: 300; font-style: italic; color: var(--teal); line-height: 1.1;">"Tu mejor vendedor nunca duerme."</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <p class="type-meta-name">Cuerpo / UI</p>
+        <p class="type-meta-spec">Neue Haas Grotesk · 300–500<br>Texto cuerpo, Etiquetas, Nav</p>
+      </div>
+      <div class="type-sample">
+        <p style="font-family: var(--sans); font-size: 18px; font-weight: 300; color: var(--navy); line-height: 1.65; max-width: 480px;">Automatiza tu funnel de ventas con agentes de IA, landing pages de alta conversión y seguimiento inteligente en tiempo real.</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <p class="type-meta-name">Etiqueta / Leyenda</p>
+        <p class="type-meta-spec">Neue Haas Grotesk · 500<br>Encabezados, Tags, Meta</p>
+      </div>
+      <div class="type-sample">
+        <p style="font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid);">Agencia de Marketing con IA · Desde 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 06 BRAND VOICE ══ -->
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <div class="section-title-block">
+      <p class="section-eyebrow">Personalidad</p>
+      <h2 class="section-heading">Voz y Tono</h2>
+    </div>
+  </div>
+  <div class="voice-grid">
+    <div class="voice-cell accent">
+      <p class="voice-cell-label">Somos</p>
+      <p class="voice-cell-title">Claros y Directos</p>
+      <p class="voice-cell-body">Explicamos tecnología compleja de forma simple. Sin muros de jerga — solo lenguaje claro que respeta el tiempo y la inteligencia del lector.</p>
+    </div>
+    <div class="voice-cell">
+      <p class="voice-cell-label">Somos</p>
+      <p class="voice-cell-title">Confiados sin arrogancia</p>
+      <p class="voice-cell-body">Sabemos que nuestros sistemas funcionan, por eso no sobrevendemos. Dejamos que los resultados hablen y mantenemos un tono honesto y creíble.</p>
+    </div>
+    <div class="voice-cell">
+      <p class="voice-cell-label">Somos</p>
+      <p class="voice-cell-title">Cercanos y Accesibles</p>
+      <p class="voice-cell-body">La automatización puede sentirse fría. Nosotros la humanizamos — escribimos como un asesor de confianza, no como un producto de software.</p>
+    </div>
+    <div class="voice-cell accent">
+      <p class="voice-cell-label">Somos</p>
+      <p class="voice-cell-title">Orientados a resultados</p>
+      <p class="voice-cell-body">Cada frase sirve al objetivo del cliente. Hablamos de velocidad, eficiencia y victorias medibles — no de funciones aisladas.</p>
+    </div>
+  </div>
+  <div class="voice-example">
+    <p class="voice-example-label">Ejemplos de Comunicación</p>
+    <div class="voice-example-grid">
+      <div class="voice-ex-item">
+        <p class="voice-ex-tag yes">✓ Acorde a la marca</p>
+        <p class="voice-ex-text">"Tu funnel trabaja mientras duermes. Nosotros construimos el sistema."</p>
+      </div>
+      <div class="voice-ex-item">
+        <p class="voice-ex-tag no">✗ Fuera de marca</p>
+        <p class="voice-ex-text no">"Leverage synergistic AI-driven omnichannel solutions to maximize ROI."</p>
+      </div>
+      <div class="voice-ex-item">
+        <p class="voice-ex-tag yes">✓ Acorde a la marca</p>
+        <p class="voice-ex-text">"Más leads, menos esfuerzo. Así de simple."</p>
+      </div>
+      <div class="voice-ex-item">
+        <p class="voice-ex-tag no">✗ Fuera de marca</p>
+        <p class="voice-ex-text no">"¡Somos un equipo apasionado disrumpiendo el paradigma del marketing digital!"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 07 APPLICATIONS ══ -->
+  <div class="section-header light">
+    <span class="section-num dark">07</span>
+    <div class="section-title-block">
+      <p class="section-eyebrow dark">En Uso</p>
+      <h2 class="section-heading dark">Aplicaciones de Marca</h2>
+    </div>
+  </div>
+  <div class="app-grid">
+    <!-- Business card -->
+    <div class="app-card">
+      <p class="app-card-label" style="color:var(--mid);">Tarjeta de Presentación</p>
+      <div class="biz-card">
+        <div>
+          <svg width="28" height="24" viewBox="0 0 64 56" fill="none">
+            <rect x="0" y="0" width="64" height="16" rx="3" fill="#598392"></rect>
+            <rect x="10" y="22" width="44" height="14" rx="3" fill="#AEC3B0" opacity="0.6"></rect>
+            <rect x="22" y="42" width="20" height="14" rx="3" fill="#EFF6E0" opacity="0.35"></rect>
+          </svg>
+          <div style="margin-top:10px;">
+            <div class="biz-name">María González</div>
+            <div class="biz-role">Estratega de Crecimiento</div>
+          </div>
+        </div>
+        <div class="biz-contact">
+          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91fcf0e3f8f0d1f8ffe7f4fff8f0f6f4fff2e8bff2fefc">[email&#160;protected]</a><br>
+          +52 55 1234 5678<br>
+          inveniagency.com
+        </div>
+      </div>
+    </div>
+    <!-- Social post -->
+    <div class="app-card light">
+      <p class="app-card-label">Publicación en Redes</p>
+      <div class="social-post">
+        <div class="social-top">
+          <div class="social-avatar">
+            <svg width="18" height="16" viewBox="0 0 64 56" fill="none">
+              <rect x="0" y="0" width="64" height="16" rx="3" fill="#EFF6E0"></rect>
+              <rect x="10" y="22" width="44" height="14" rx="3" fill="#EFF6E0" opacity="0.6"></rect>
+              <rect x="22" y="42" width="20" height="14" rx="3" fill="#EFF6E0" opacity="0.3"></rect>
+            </svg>
+          </div>
+          <div>
+            <div class="social-handle">@inveniagency</div>
+          </div>
+        </div>
+        <div class="social-headline">¿Cuántos leads perdiste hoy por falta de seguimiento?<br><br>Nosotros los capturamos. Todos.</div>
+        <div class="social-tag">#MarketingAutomation #IA #CRM</div>
+      </div>
+    </div>
+    <!-- Email signature -->
+    <div class="app-card light" style="background:var(--cream);">
+      <p class="app-card-label">Firma de Correo</p>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <div class="email-header">
+          <p class="email-from">From: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9af9fbe8f6f5e9daf3f4ecfff4f3fbfdfff4f9e3b4f9f5f7">[email&#160;protected]</a></p>
+          <p class="email-subject">Tu propuesta está lista</p>
+          <p class="email-body">Hola, te comparto los resultados del primer mes de campaña. Como podrás ver, el costo por lead bajó un 34% respecto al mes anterior...</p>
+        </div>
+        <div style="background:var(--navy);padding:20px 28px;display:flex;align-items:center;gap:20px;">
+          <svg width="22" height="20" viewBox="0 0 64 56" fill="none">
+            <rect x="0" y="0" width="64" height="16" rx="3" fill="#598392"></rect>
+            <rect x="10" y="22" width="44" height="14" rx="3" fill="#AEC3B0" opacity="0.6"></rect>
+            <rect x="22" y="42" width="20" height="14" rx="3" fill="#EFF6E0" opacity="0.35"></rect>
+          </svg>
+          <div>
+            <div style="font-family:var(--serif);font-size:15px;color:var(--cream);font-weight:400;letter-spacing:0.06em;">INVENIO AGENCY</div>
+            <div style="font-size:10px;color:var(--mid);margin-top:2px;letter-spacing:0.1em;">inveniagency.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CTA button style -->
+    <div class="app-card" style="background:var(--teal);">
+      <p class="app-card-label" style="color:var(--sage);">UI / Elementos de Landing Page</p>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:var(--mid);padding:14px 28px;display:inline-flex;align-items:center;gap:10px;width:fit-content;">
+          <span style="font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:0.1em;color:var(--cream);text-transform:uppercase;">Quiero más clientes →</span>
+        </div>
+        <div style="border:1.5px solid var(--sage);padding:14px 28px;display:inline-flex;align-items:center;gap:10px;width:fit-content;">
+          <span style="font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:0.1em;color:var(--cream);text-transform:uppercase;">Ver cómo funciona</span>
+        </div>
+        <div style="margin-top:8px;">
+          <p style="font-family:var(--serif);font-size:28px;font-weight:300;font-style:italic;color:var(--cream);line-height:1.3;">"Tu mejor vendedor<br>nunca duerme."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BACK COVER ══ -->
+  <div class="back-cover">
+    <svg width="48" height="42" viewBox="0 0 64 56" fill="none">
+      <rect x="0" y="0" width="64" height="16" rx="3" fill="#598392" opacity="0.5"></rect>
+      <rect x="10" y="22" width="44" height="14" rx="3" fill="#AEC3B0" opacity="0.3"></rect>
+      <rect x="22" y="42" width="20" height="14" rx="3" fill="#EFF6E0" opacity="0.15"></rect>
+    </svg>
+    <p>Invenio Agency<br><em style="font-style:italic;color:var(--sage);">Guía de Marca 2026</em></p>
+    <span style="">¿Preguntas? <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a020f0606052a03041c0f04030b0d0f04091344090507">[email&#160;protected]</a></span>
+  </div>
+
+</div><!-- end .page -->
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>

@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)]" />
-          <span className="text-xl font-bold tracking-tight text-[var(--color-text-primary)] font-display">Yay SaaS</span>
+          <span className="text-xl font-bold tracking-tight text-[var(--color-text-primary)] font-display">Invenio Agency</span>
         </div>
         
         <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-[var(--color-text-secondary)]">

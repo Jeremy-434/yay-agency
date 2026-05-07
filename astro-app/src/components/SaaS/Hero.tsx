@@ -44,17 +44,17 @@ const Hero: React.FC = () => {
 
       <div className="max-w-4xl">
         <h1 ref={titleRef} className="mb-6 text-5xl font-black tracking-tight text-[var(--color-text-primary)] sm:text-7xl font-display leading-[1.1]">
-          Everything you need to <span className="text-[var(--color-brand-primary)]">scale faster</span>
+          Del lead al cierre, <span className="text-[var(--color-brand-primary)]">sin fricción</span>
         </h1>
         <p ref={subtitleRef} className="mx-auto mb-10 max-w-2xl text-lg font-medium text-[var(--color-text-secondary)] sm:text-xl leading-relaxed">
-          The all-in-one platform for modern teams. Manage your projects, automate workflows, and grow your business with Yay SaaS.
+          Acompañamos al cliente potencial en todo el proceso a través de automatización inteligente y agentes de IA que trabajan mientras duermes.
         </p>
         <div ref={ctaRef} className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <button className="rounded-full bg-[var(--color-brand-primary)] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-sky-500/20 hover:scale-105 hover:shadow-sky-500/40 transition-all cursor-pointer">
-            Start Free Trial
+          <button className="rounded-full bg-[var(--color-brand-primary)] px-8 py-4 text-lg font-bold text-[var(--color-text-inverse)] shadow-lg shadow-sky-500/20 hover:scale-105 transition-all cursor-pointer">
+            Quiero más clientes
           </button>
           <button className="flex items-center gap-2 rounded-full border border-[var(--color-brand-primary)]/20 bg-white/50 px-8 py-4 text-lg font-bold text-[var(--color-brand-primary)] backdrop-blur-sm hover:bg-white transition-all cursor-pointer">
-            View Demo
+            Ver cómo funciona
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

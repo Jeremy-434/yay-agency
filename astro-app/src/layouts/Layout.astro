@@ -2,6 +2,7 @@
 // https://docs.astro.build/en/guides/view-transitions/
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/globals.css';
+import CustomCursor from '../components/CustomCursor';
 
 interface Props {
   title: string;
@@ -42,114 +43,285 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body>
-    <div class="container">
-      <header class="header" style="view-transition-name: main-header;">
-        <a
-          class="header__title"
-          href="/"
-          style="view-transition-name: logo;"
-          >Yay Agency</a
-        >
+  <body class="selection:bg-[var(--color-brand-accent)] selection:text-[var(--color-brand-primary)]">
+    <CustomCursor client:load />
+    <div class="app-wrapper">
+      <header class="header">
+        <div class="header__container">
+          <a
+            class="header__title"
+            href="/"
+            style="font-family: var(--font-family-display); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;"
+            >Invenio</a
+          >
+          
+          <button class="mobile-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="header__nav">
+            <a href="#servicios">Servicios</a>
+            <a href="#proceso">Proceso</a>
+            <a href="#contacto" class="nav-cta">Comenzar</a>
+          </nav>
+        </div>
       </header>
+
       <main>
         <slot />
       </main>
+
       <footer class="footer">
-        <p class="footer__text">
-          Made with <svg
-            data-sanity-icon="heart-filled"
-            width="1em"
-            height="1em"
-            viewBox="0 0 25 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="M17 16C15.8 17.3235 12.5 20.5 12.5 20.5C12.5 20.5 9.2 17.3235 8 16C5.2 12.9118 4.5 11.7059 4.5 9.5C4.5 7.29412 6.1 5.5 8.5 5.5C10.5 5.5 11.7 6.82353 12.5 8.14706C13.3 6.82353 14.5 5.5 16.5 5.5C18.9 5.5 20.5 7.29412 20.5 9.5C20.5 11.7059 19.8 12.9118 17 16Z"
-              fill="currentColor"
-              stroke="currentColor"
-              stroke-width="1.2"
-            ></path></svg
-          > at Sanity
-        </p>
+        <div class="footer__content">
+          <div class="footer__brand">
+            <h2 class="footer__logo">Invenio Agency</h2>
+            <p class="footer__tagline">Del descubrimiento al cierre, sin fricción.</p>
+          </div>
+          <div class="footer__grid">
+            <div class="footer__col">
+              <h4>Servicios</h4>
+              <ul>
+                <li>Agentes de IA</li>
+                <li>Automatización CRM</li>
+                <li>Funnels de Venta</li>
+              </ul>
+            </div>
+            <div class="footer__col">
+              <h4>Compañía</h4>
+              <ul>
+                <li>Sobre nosotros</li>
+                <li>Casos de éxito</li>
+                <li>Contacto</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 Invenio Agency. Todos los derechos reservados.</p>
+        </div>
       </footer>
     </div>
+
+    <script>
+      const toggle = document.querySelector('.mobile-toggle');
+      const nav = document.querySelector('.header__nav');
+      
+      toggle?.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        nav?.classList.toggle('active');
+        document.body.classList.toggle('overflow-hidden');
+      });
+
+      // Close menu on link click
+      const navLinks = document.querySelectorAll('.header__nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          toggle?.classList.remove('active');
+          nav?.classList.remove('active');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    </script>
   </body>
 </html>
 
 <style>
-  .container {
-    margin: 0 auto;
+  .app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   main {
-    margin-top: 45px;
+    flex: 1;
+    padding-top: 70px;
   }
 
   .header {
-    display: flex;
-    padding: 0 var(--spacing-4);
-    border-bottom: 1px solid var(--color-bg-elevated);
-
-    z-index: var(--z-sticky);
-    background: var(--color-bg-darker);
+    background: var(--color-bg-glass);
+    backdrop-filter: blur(var(--blur-md));
     position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    top: 0;
+    z-index: var(--z-sticky);
+    border-bottom: 1px solid rgba(174, 195, 176, 0.1);
+  }
 
-    & .header__title {
-      font-weight: 800;
-      font-size: var(--font-size-lg);
-      line-height: var(--line-height-normal);
-      padding-left: var(--spacing-4);
-      margin: var(--spacing-5) 0;
-      text-decoration: none;
+  .header__container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-4) var(--spacing-6);
+    @media (min-width: 768px) {
+      padding: var(--spacing-4) var(--spacing-8);
+    }
+  }
+
+  .header__title {
+    font-size: var(--font-size-lg);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    z-index: 100;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    z-index: 100;
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    & span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--color-brand-sage);
+      transition: all 0.3s ease;
+    }
+
+    &.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    &.active span:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .header__nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg-dark);
+    padding: 100px var(--spacing-8);
+    gap: var(--spacing-8);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 90;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    @media (min-width: 768px) {
+      position: static;
+      flex-direction: row;
+      background: none;
+      padding: 0;
+      gap: var(--spacing-6);
+      transform: none;
+      align-items: center;
+    }
+
+    & a {
       color: var(--color-text-primary);
+      text-decoration: none;
+      font-size: var(--font-size-xl);
+      font-weight: 500;
+      @media (min-width: 768px) {
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+      }
+
+      &:hover {
+        color: var(--color-brand-accent);
+      }
+    }
+
+    & .nav-cta {
+      background: var(--color-brand-accent);
+      color: var(--color-brand-primary);
+      padding: var(--spacing-4) var(--spacing-8);
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      text-align: center;
+      @media (min-width: 768px) {
+        padding: var(--spacing-2) var(--spacing-5);
+        font-weight: 600;
+      }
     }
   }
 
   .footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 var(--space-3);
+    background: var(--color-bg-darker);
+    padding: var(--fluid-40-80) var(--spacing-6);
+    border-top: 1px solid rgba(174, 195, 176, 0.05);
 
-    & .footer__text {
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
+    & .footer__content {
+      max-width: var(--container-xl);
+      margin: 0 auto;
       display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-  }
-
-  @media (min-width: 575px) {
-    .container {
-      max-width: var(--max-width-1);
-      padding: 0 var(--space-4);
-    }
-
-    main {
-      margin-top: unset;
-    }
-
-    .header {
-      position: unset;
-      border-bottom: none;
-      margin: var(--space-3) 0;
-      padding: var(--space-2) 0;
-      background: unset;
-
-      & .header__title {
-        margin: var(--space-3) 0 var(--space-2);
-        font-size: var(--font-size-5);
+      flex-direction: column;
+      gap: var(--spacing-10);
+      @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
       }
     }
 
-    .footer {
-      margin: var(--space-3) 0;
+    & .footer__brand {
+      max-width: 300px;
+      & .footer__logo {
+        font-family: var(--font-family-display);
+        color: var(--color-brand-cream);
+        margin-bottom: var(--spacing-4);
+      }
+      & .footer__tagline {
+        color: var(--color-text-muted);
+        font-style: italic;
+      }
+    }
+
+    & .footer__grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-10);
+      @media (min-width: 480px) {
+        flex-direction: row;
+        gap: var(--spacing-20);
+      }
+    }
+
+    & .footer__col {
+      & h4 {
+        color: var(--color-brand-sage);
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+        letter-spacing: var(--letter-spacing-wide);
+        margin-bottom: var(--spacing-4);
+      }
+      & ul {
+        list-style: none;
+        & li {
+          color: var(--color-text-secondary);
+          margin-bottom: var(--spacing-2);
+          font-size: var(--font-size-sm);
+        }
+      }
+    }
+
+    & .footer__bottom {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      margin-top: var(--spacing-12);
+      padding-top: var(--spacing-6);
+      border-top: 1px solid rgba(174, 195, 176, 0.05);
+      text-align: center;
+      & p {
+        font-size: var(--font-size-xs);
+        color: var(--color-text-muted);
+      }
     }
   }
 </style>
-
-

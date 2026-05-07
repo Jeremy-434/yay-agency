@@ -1,25 +1,248 @@
 ---
-import Card from "../components/Card.astro";
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
-import { getPosts } from "../utils/sanity";
 import Hero from "@features/hero/Hero.tsx";
+import InvenioServices from "../components/Aether/Services.tsx";
+import { getPosts } from "../utils/sanity";
+import Card from "../components/Card.astro";
 
 const posts = await getPosts();
 ---
 
-<Layout title="Yay Agency - Creative Excellence in Motion">
+<Layout title="Invenio Agency — Automatización Inteligente & Funnels de Venta">
   <!-- Hero Section -->
   <Hero 
     client:load
-    title="Yay Agency"
-    subtitle="Creative Excellence in Motion"
-    ctaText="Explore Our Work"
-    ctaHref="#portfolio"
+    title="Invenio"
+    subtitle="Tu mejor vendedor nunca duerme. Construimos sistemas de IA que convierten leads en clientes mientras tú descansas."
+    ctaText="Optimiza tu Funnel"
+    ctaHref="#contacto"
   />
 
-  <!-- Portfolio/Posts Section -->
-  <section id="portfolio" style="padding: 4rem 2rem; min-height: 50vh;">
-    {posts.length ? posts.map((post) => <Card post={post} />) : <Welcome />}
+  <!-- Mission Statement / Essence -->
+  <section class="mission-section">
+    <div class="container-custom">
+      <p class="mission-eyebrow">Nuestra Misión</p>
+      <h2 class="mission-title">
+        Acompañamos al cliente potencial en todo el proceso — desde la búsqueda hasta la venta formalizada — a través de <span>automatización inteligente</span> y agentes de IA.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicios" class="section-padding">
+    <InvenioServices client:visible />
+  </section>
+
+  <!-- Strata Process Section (The Funnel) -->
+  <section id="proceso" class="process-section section-padding">
+    <div class="container-custom">
+      <div class="process-header">
+        <span class="process-num">03</span>
+        <div class="process-title-block">
+          <p class="process-eyebrow">Metodología</p>
+          <h2 class="process-heading">El Sistema Strata</h2>
+        </div>
+      </div>
+
+      <div class="strata-grid">
+        <div class="strata-item">
+          <div class="strata-bar strata-1"></div>
+          <div class="strata-content">
+            <h3>Descubrimiento</h3>
+            <p>Capturamos la atención del prospecto ideal a través de campañas de performance optimizadas.</p>
+          </div>
+        </div>
+        <div class="strata-item">
+          <div class="strata-bar strata-2"></div>
+          <div class="strata-content">
+            <h3>Cualificación</h3>
+            <p>Nuestros agentes de IA filtran y preparan al lead, asegurando que solo los mejores lleguen a ti.</p>
+          </div>
+        </div>
+        <div class="strata-item">
+          <div class="strata-bar strata-3"></div>
+          <div class="strata-content">
+            <h3>Conversión</h3>
+            <p>Sistemas automatizados de seguimiento que cierran la brecha entre el interés y la venta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio/Success Stories -->
+  {posts.length > 0 && (
+    <section id="casos" class="portfolio-section section-padding">
+      <div class="container-custom">
+        <h2 class="section-title">Casos de Éxito</h2>
+        <div class="portfolio-grid">
+          {posts.map((post) => <Card post={post} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Contact / CTA -->
+  <section id="contacto" class="cta-section section-padding">
+    <div class="container-custom">
+      <div class="cta-card">
+        <h2 class="cta-title">¿Listo para escalar sin fricción?</h2>
+        <p class="cta-text">Hablemos sobre cómo podemos automatizar tu proceso de ventas hoy mismo.</p>
+        <a href="mailto:hola@inveniagency.com" class="cta-button">Agendar Consultoría →</a>
+      </div>
+    </div>
   </section>
 </Layout>
+
+<style>
+  /* Mission Section */
+  .mission-section {
+    padding-block: var(--fluid-80-120);
+    background: var(--color-bg-dark);
+    text-align: center;
+  }
+  .mission-eyebrow {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-extrawide);
+    color: var(--color-brand-accent);
+    margin-bottom: var(--spacing-6);
+  }
+  .mission-title {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.75rem, 1rem + 4vw, 3rem);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    font-weight: 300;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .mission-title span {
+    color: var(--color-brand-sage);
+    font-style: italic;
+  }
+
+  /* Process Section */
+  .process-section {
+    background: var(--color-bg-darker);
+  }
+  .process-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6);
+    margin-bottom: var(--fluid-40-80);
+  }
+  .process-num {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-4xl);
+    line-height: 1;
+    color: rgba(174, 195, 176, 0.1);
+  }
+  .process-eyebrow {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-brand-accent);
+    margin-bottom: var(--spacing-1);
+  }
+  .process-heading {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-2xl);
+    color: var(--color-brand-cream);
+  }
+
+  /* Strata Grid */
+  .strata-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-12);
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-8);
+    }
+  }
+  .strata-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+  }
+  .strata-bar {
+    height: 8px;
+    border-radius: var(--radius-full);
+  }
+  .strata-1 { background: var(--color-brand-secondary); width: 100%; }
+  .strata-2 { background: var(--color-brand-accent); width: 80%; }
+  .strata-3 { background: var(--color-brand-sage); width: 60%; }
+  
+  .strata-content h3 {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-brand-cream);
+  }
+  .strata-content p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+  }
+
+  /* Portfolio Section */
+  .section-title {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-cream);
+    margin-bottom: var(--fluid-40-80);
+    text-align: center;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-10);
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--color-bg-darker);
+  }
+  .cta-card {
+    background: var(--color-brand-secondary);
+    padding: var(--fluid-40-80);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .cta-title {
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 1.5rem + 3vw, 4rem);
+    color: var(--color-brand-cream);
+    margin-bottom: var(--spacing-6);
+  }
+  .cta-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-sage);
+    margin-bottom: var(--spacing-10);
+    max-width: 600px;
+    margin-inline: auto;
+  }
+  .cta-button {
+    display: inline-block;
+    background: var(--color-brand-cream);
+    color: var(--color-brand-primary);
+    padding: var(--spacing-5) var(--spacing-12);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(1, 22, 30, 0.4);
+      background: var(--color-brand-accent);
+    }
+  }
+</style>
