@@ -2,14 +2,16 @@ import { useRef } from 'react';
 import { gsap, SplitText, ScrollTrigger, useGSAP } from '@lib/gsap-config';
 
 interface HeroProps {
-  title?: string;
+  title1?: string;
+  title2?: string;
   subtitle?: string;
   ctaText?: string;
   showDashboard?: boolean;
 }
 
 const Hero: React.FC<HeroProps> = ({
-  title = "Invenio Agency",
+  title1 = "Invenio Agency",
+  title2 = "En Movimiento",
   subtitle = "Automatiza tu funnel de ventas con precisión. Acompañamos al cliente potencial desde el descubrimiento hasta la venta formalizada.",
   ctaText = "Optimizar Funnel",
   showDashboard = false,
@@ -20,10 +22,8 @@ const Hero: React.FC<HeroProps> = ({
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
 
-  // Manual split for animation stability - splits by <br /> if present
-  const lines = title.split('<br />');
-  const line1Text = lines[0].replace(/<[^>]*>/g, '');
-  const line2Text = lines[1] ? lines[1].replace(/<[^>]*>/g, '') : "";
+  const line1Text = title1;
+  const line2Text = title2;
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } });
@@ -33,11 +33,8 @@ const Hero: React.FC<HeroProps> = ({
     gsap.set(split1.chars, { opacity: 0, y: 50, rotateX: -90, display: 'inline-block' });
 
     // Split Line 2 if it exists
-    let split2: SplitText | null = null;
-    if (line2Ref.current && line2Text) {
-      split2 = new SplitText(line2Ref.current, { type: 'chars,words' });
-      gsap.set(split2.chars, { opacity: 0, y: 50, rotateX: -90, display: 'inline-block' });
-    }
+    const split2 = new SplitText(line2Ref.current, { type: 'chars,words' });
+    gsap.set(split2.chars, { opacity: 0, y: 50, rotateX: -90, display: 'inline-block' });
 
     gsap.set(subtitleRef.current, { opacity: 0, y: 30 });
     gsap.set(ctaRef.current, { opacity: 0, scale: 0.8 });
@@ -113,19 +110,19 @@ const Hero: React.FC<HeroProps> = ({
         <h1 className="text-5xl md:text-8xl font-black text-[var(--color-aether-on-surface)] leading-[1.1] tracking-tighter drop-shadow-2xl">
           <div ref={line1Ref} className="block">{line1Text}</div>
           {line2Text && (
-            <div 
-              ref={line2Ref} 
+            <div
+              ref={line2Ref}
               className="text-gradient-aether block mt-2"
             >
               {line2Text}
             </div>
           )}
         </h1>
-        
+
         <p ref={subtitleRef} className="text-lg md:text-xl text-[var(--color-aether-on-surface-variant)] max-w-2xl font-medium">
           {subtitle}
         </p>
-        
+
         <button
           ref={ctaRef}
           className="mt-8 px-8 py-4 rounded-full font-bold text-sm text-[var(--color-brand-primary)] bg-[rgb(89,131,146)] shadow-[0_0_30px_rgba(89,131,146,0.3)] hover:bg-[var(--color-brand-cream)] transition-all duration-300 flex items-center gap-2 group border border-white/10"
@@ -139,10 +136,10 @@ const Hero: React.FC<HeroProps> = ({
         {showDashboard && (
           <div className="mt-20 w-full max-w-6xl rounded-2xl border border-white/50 bg-white/30 p-4 shadow-2xl backdrop-blur-lg">
             <div className="aspect-[16/9] w-full rounded-xl bg-gradient-to-tr from-sky-100 to-sky-50 flex items-center justify-center">
-               <div className="flex flex-col items-center gap-4 opacity-40">
-                  <div className="h-16 w-16 rounded-2xl bg-[var(--color-aether-primary)]" />
-                  <p className="font-bold text-[var(--color-aether-primary)]">Dashboard Visualization</p>
-               </div>
+              <div className="flex flex-col items-center gap-4 opacity-40">
+                <div className="h-16 w-16 rounded-2xl bg-[var(--color-aether-primary)]" />
+                <p className="font-bold text-[var(--color-aether-primary)]">Dashboard Visualization</p>
+              </div>
             </div>
           </div>
         )}
