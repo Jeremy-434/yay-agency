@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invenio Agency — Video Thumbnail</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Video Thumbnail: 1280 × 720 px (16:9) */
+        .canvas {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            align-items: center;
+            padding: 60px 80px;
+            background-image: linear-gradient(90deg, rgba(1, 22, 30, 0.95) 40%, rgba(1, 22, 30, 0.3) 100%), url('clinic-background.png');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(174, 195, 176, 0.25);
+        }
+
+        .stripe-bg {
+            opacity: 0.04;
+        }
+
+        /* Glass Panel Container for Text */
+        .content-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 650px;
+            height: 100%;
+            padding: 48px;
+            background: rgba(1, 22, 30, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(174, 195, 176, 0.12);
+            border-radius: 24px;
+            z-index: 2;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .top-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .eyebrow {
+            font-family: 'Crimson Pro', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--sage);
+            background: rgba(18, 69, 89, 0.4);
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(174, 195, 176, 0.2);
+            display: inline-block;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            opacity: 0.85;
+        }
+
+        .text-block {
+            margin-top: auto;
+            margin-bottom: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 58px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--cream);
+            margin: 0;
+        }
+
+        .title span {
+            color: transparent;
+            background: linear-gradient(90deg, var(--sage), #C5D8C1, var(--cream));
+            background-clip: text;
+            -webkit-background-clip: text;
+            font-style: italic;
+        }
+
+        .description {
+            font-family: 'Crimson Pro', serif;
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--sage);
+            line-height: 1.5;
+            margin: 0;
+            max-width: 540px;
+            opacity: 0.9;
+        }
+
+        /* Call To Action Row */
+        .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-top: auto;
+        }
+
+        .btn-play {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: var(--cream);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(239, 246, 224, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-play svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--navy);
+            margin-left: 4px;
+        }
+
+        .cta-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--cream);
+        }
+
+        .cta-subtext {
+            font-family: 'Crimson Pro', serif;
+            font-size: 13px;
+            color: var(--mid);
+            display: block;
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        /* Right side accent */
+        .badge-container {
+            position: absolute;
+            right: 80px;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .circular-badge {
+            width: 140px;
+            height: 140px;
+            border: 1px solid rgba(174, 195, 176, 0.3);
+            border-radius: 50%;
+            background: rgba(1, 22, 30, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 16px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.3;
+            color: var(--cream);
+            text-transform: uppercase;
+        }
+
+        .badge-text span {
+            color: var(--sage);
+            font-size: 11px;
+            display: block;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        /* Subtle ambient elements */
+        .orb-thumbnail {
+            width: 400px;
+            height: 400px;
+            background: var(--teal);
+            bottom: -150px;
+            right: -100px;
+            opacity: 0.25;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="canvas">
+        <!-- Diagonal stripe bg -->
+        <div class="stripe-bg"></div>
+
+        <!-- Ambient blur orb -->
+        <div class="orb orb-thumbnail"></div>
+
+        <!-- Left Content Card -->
+        <div class="content-panel">
+            <div class="top-meta">
+                <span class="eyebrow">Case Study</span>
+                <img class="logo-img" src="../astro-app/public/logo/Invenio Logo Vector Light 1.svg" alt="Invenio Logo" />
+            </div>
+
+            <div class="text-block">
+                <h1 class="title">Get <span>100+ New Patients</span> For Your Clinic</h1>
+                <p class="description">
+                    The exact acquisition system to fill your aesthetic clinic with highly qualified patient inquiries on autopilot.
+                </p>
+            </div>
+
+            <div class="cta-row">
+                <div class="btn-play">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="cta-text">Watch Case Study</span>
+                    <span class="cta-subtext">Free Instant Access • 8 min watch</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Right Badge -->
+        <div class="badge-container">
+            <div class="circular-badge">
+                <div class="badge-text">
+                    No Waste
+                    <span>0% Ad Spoilage</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom accent bar -->
+        <div class="accent-bar"></div>
+    </div>
+</body>
+
+</html>

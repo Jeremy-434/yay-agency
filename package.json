@@ -4,8 +4,11 @@
   "engines": {
     "node": "20.x"
   },
+  "packageManager": "npm@10.8.2",
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=astro-app\" \"npm run dev --workspace=studio\""
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
   },
   "keywords": [
     "Sanity",
@@ -20,11 +23,11 @@
   },
   "homepage": "https://github.com/sanity-io/sanity-template-astro-clean#readme",
   "workspaces": [
-    "studio",
-    "astro-app"
+    "apps/*",
+    "packages/*"
   ],
+  "type": "module",
   "devDependencies": {
-    "concurrently": "^9.1.0"
-  },
-  "type": "module"
+    "turbo": "^2.9.12"
+  }
 }

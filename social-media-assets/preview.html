@@ -8,10 +8,11 @@
     <style>
         body {
             flex-direction: column;
-            gap: 80px;
+            gap: 60px;
             min-height: auto;
             padding: 60px 40px;
             overflow: auto;
+            align-items: center;
         }
 
         h1 {
@@ -20,13 +21,15 @@
             font-weight: 300;
             letter-spacing: 0.06em;
             color: var(--cream);
+            margin-bottom: 20px;
         }
 
         .asset-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 24px;
+            gap: 16px;
+            width: 100%;
         }
 
         .label {
@@ -50,13 +53,41 @@
         }
 
         .ig-frame {
+            width: 1080px;
+            height: 1080px;
+            transform: scale(0.6);
+            transform-origin: top center;
+        }
+
+        .ig-container {
             width: 648px;
             height: 648px;
+            overflow: hidden;
+        }
+
+        .thumb-frame {
+            width: 1280px;
+            height: 720px;
+            transform: scale(0.6);
+            transform-origin: top center;
+        }
+
+        .thumb-container {
+            width: 768px;
+            height: 432px;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
     <h1>Invenio — Social Media Assets</h1>
+
+    <div class="asset-group">
+        <span class="label">Free Case Study Video Thumbnail — 1280 × 720 px (scaled 60%)</span>
+        <div class="thumb-container">
+            <iframe src="video-thumbnail.html" class="thumb-frame" scrolling="no"></iframe>
+        </div>
+    </div>
 
     <div class="asset-group">
         <span class="label">Facebook Cover — 851 × 315 px</span>
@@ -65,7 +96,9 @@
 
     <div class="asset-group">
         <span class="label">Instagram Post — 1080 × 1080 px (scaled 60%)</span>
-        <iframe src="instagram-post.html" class="ig-frame" scrolling="no" style="transform: scale(1); transform-origin: top center;"></iframe>
+        <div class="ig-container">
+            <iframe src="instagram-post.html" class="ig-frame" scrolling="no"></iframe>
+        </div>
     </div>
 </body>
 </html>
