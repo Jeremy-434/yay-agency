@@ -53,7 +53,7 @@ const FaqSection: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="py-20 md:py-32 px-6 md:px-8 bg-[var(--color-redesign-bg)]"
+      className="relative z-10 py-20 md:py-32 px-6 md:px-8 bg-[var(--color-redesign-bg)]"
     >
       <div
         ref={contentRef}

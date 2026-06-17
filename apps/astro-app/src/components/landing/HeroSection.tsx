@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden px-6 md:px-8"
+      className="relative z-10 min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden px-6 md:px-8"
       style={{ background: 'var(--color-redesign-bg)' }}
     >
       {/* Contact Email Pill */}
