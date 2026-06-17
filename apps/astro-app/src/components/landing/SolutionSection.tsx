@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { gsap, ScrollTrigger, useGSAP } from '@lib/gsap-config';
+import { gsap, useGSAP } from '@lib/gsap-config';
 import GlowCard from '../ui/GlowCard';
 
 const SolutionSection: React.FC = () => {
@@ -8,13 +8,16 @@ const SolutionSection: React.FC = () => {
 
   useGSAP(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const cards = cardsRef.current?.querySelectorAll('.solution-card');
 
     if (prefersReducedMotion) {
-      gsap.set(cardsRef.current?.querySelectorAll('.solution-card'), { opacity: 1, y: 0 });
+      if (cards) gsap.set(cards, { opacity: 1, y: 0 });
       return;
     }
 
-    gsap.from(cardsRef.current?.querySelectorAll('.solution-card'), {
+    if (!cards) return;
+
+    gsap.from(cards, {
       y: 60,
       opacity: 0,
       duration: 0.8,

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { gsap, ScrollTrigger, useGSAP } from '@lib/gsap-config';
+import { gsap, useGSAP } from '@lib/gsap-config';
 import GlowCard from '../ui/GlowCard';
 
 const FaqSection: React.FC = () => {

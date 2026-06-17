@@ -1,6 +1,5 @@
 import { useRef } from 'react';
-import { gsap, ScrollTrigger, useGSAP } from '@lib/gsap-config';
-import GradientButton from '../ui/GradientButton';
+import { gsap, useGSAP } from '@lib/gsap-config';
 
 const ProblemSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

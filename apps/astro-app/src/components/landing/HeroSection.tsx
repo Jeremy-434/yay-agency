@@ -1,13 +1,12 @@
 import { useRef } from 'react';
-import { gsap, SplitText, ScrollTrigger, useGSAP } from '@lib/gsap-config';
-import GradientButton from '../ui/GradientButton';
+import { gsap, SplitText, useGSAP } from '@lib/gsap-config';
 
 const HeroSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const bulletsRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
   const captionRef = useRef<HTMLParagraphElement>(null);
 
