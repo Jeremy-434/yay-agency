@@ -317,3 +317,22 @@ html::-webkit-scrollbar {
     display: inline-block;
   }
 }
+
+/* Touch device interaction overrides */
+@media (hover: none) {
+  .group:has(> .absolute) > .absolute {
+    opacity: 1;
+  }
+
+  .service-card > .absolute {
+    opacity: 1;
+  }
+
+  .bento-item > .absolute {
+    opacity: 1;
+  }
+
+  .group > [class*="translate-y"] {
+    transform: translateY(0);
+  }
+}

@@ -6,9 +6,10 @@ const CustomCursor: React.FC = () => {
   const followerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
     const cursor = cursorRef.current;
     const follower = followerRef.current;
-    if (!cursor || !follower) return;
+    if (!cursor || !follower || isTouchDevice) return;
 
     const onMouseMove = (e: MouseEvent) => {
       // Immediate position for dot

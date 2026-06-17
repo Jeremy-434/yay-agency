@@ -6,8 +6,16 @@ const Portfolio: React.FC = () => {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      gsap.set('.bento-item', { opacity: 1, y: 0, rotateX: 0 });
+      gsap.set('.section-title', { opacity: 1, x: 0 });
+      return;
+    }
+
     const items = gsap.utils.toArray('.bento-item');
-    
+
     items.forEach((item: any, i) => {
       gsap.from(item, {
         opacity: 0,
@@ -36,19 +44,19 @@ const Portfolio: React.FC = () => {
   });
 
   return (
-    <section ref={containerRef} className="py-24 px-8 max-w-[1440px] mx-auto">
-      <div className="mb-16 flex justify-between items-end section-title">
+    <section ref={containerRef} className="py-12 md:py-24 px-5 md:px-8 max-w-[1440px] mx-auto">
+      <div className="mb-10 md:mb-16 flex flex-col gap-4 md:flex-row md:justify-between md:items-end section-title">
         <h2 className="text-4xl md:text-6xl font-black text-[var(--color-aether-on-surface)] tracking-tighter">
           Casos de Éxito
         </h2>
-        <a className="font-bold text-sm text-[var(--color-aether-surface-tint)] hover:text-[var(--color-aether-primary)] transition-colors flex items-center gap-2" href="#">
+        <a className="font-bold text-sm text-[var(--color-aether-surface-tint)] hover:text-[var(--color-aether-primary)] transition-colors flex items-center gap-2 md:whitespace-nowrap" href="#">
           Ver Todos <span className="material-symbols-outlined text-[16px]">arrow_outward</span>
         </a>
       </div>
-      
-      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[300px]">
+
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 md:auto-rows-[300px]">
         {/* Large Feature */}
-        <div className="bento-item md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden relative group border border-white/10 glass-panel">
+        <div className="bento-item col-span-1 md:col-span-2 md:row-span-2 min-h-[260px] md:min-h-0 rounded-3xl overflow-hidden relative group border border-white/10 glass-panel">
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-aether-surface-container)] to-[var(--color-aether-surface-container-high)] opacity-80 z-0"></div>
           <div className="relative z-10 p-8 h-full flex flex-col justify-end">
             <div className="bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/5 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -62,7 +70,7 @@ const Portfolio: React.FC = () => {
         </div>
 
         {/* Tall Item */}
-        <div className="bento-item md:col-span-1 md:row-span-2 rounded-3xl overflow-hidden relative group border border-white/10 glass-panel">
+        <div className="bento-item col-span-1 md:col-span-1 md:row-span-2 min-h-[260px] md:min-h-0 rounded-3xl overflow-hidden relative group border border-white/10 glass-panel">
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-aether-primary)]/20 to-transparent z-0"></div>
           <div className="relative z-10 p-8 h-full flex flex-col justify-between">
             <div className="flex justify-end">

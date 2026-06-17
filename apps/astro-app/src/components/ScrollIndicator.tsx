@@ -113,36 +113,46 @@ export default function ScrollIndicator() {
 
   if (!isVisible) return null;
 
-  return (
-    <div ref={containerRef} className="scroll-indicator" aria-label="Navegación por secciones">
-      {/* Vertical track line */}
-      <div className="indicator-track">
-        <div className="track-bg" />
-        <div ref={lineRef} className="track-progress" />
-      </div>
+  const progressPercent = activeIndex / (SECTIONS.length - 1) * 100;
 
-      {/* Dots */}
-      <div className="indicator-dots">
-        {SECTIONS.map((section, i) => {
-          const isActive = activeIndex === i;
-          return (
-            <button
-              key={section.id}
-              ref={el => { dotRefs.current[i] = el; }}
-              className={`dot-btn ${isActive ? 'is-active' : ''}`}
-              onClick={() => scrollToSection(section.id, i)}
-              aria-label={`Ir a ${section.label}`}
-              title={section.label}
-            >
-              {/* Outer ring */}
-              <span className="dot-ring" />
-              {/* Inner fill */}
-              <span className="dot-inner" />
-              {/* Label tooltip */}
-              <span className="dot-label" aria-hidden="true">{section.label}</span>
-            </button>
-          );
-        })}
+  return (
+    <>
+      {/* Mobile progress bar */}
+      <div
+        className="scroll-progress-bar"
+        style={{ transform: `scaleX(${progressPercent / 100})` }}
+      />
+
+      <div ref={containerRef} className="scroll-indicator" aria-label="Navegación por secciones">
+        {/* Vertical track line */}
+        <div className="indicator-track">
+          <div className="track-bg" />
+          <div ref={lineRef} className="track-progress" />
+        </div>
+
+        {/* Dots */}
+        <div className="indicator-dots">
+          {SECTIONS.map((section, i) => {
+            const isActive = activeIndex === i;
+            return (
+              <button
+                key={section.id}
+                ref={el => { dotRefs.current[i] = el; }}
+                className={`dot-btn ${isActive ? 'is-active' : ''}`}
+                onClick={() => scrollToSection(section.id, i)}
+                aria-label={`Ir a ${section.label}`}
+                title={section.label}
+              >
+                {/* Outer ring */}
+                <span className="dot-ring" />
+                {/* Inner fill */}
+                <span className="dot-inner" />
+                {/* Label tooltip */}
+                <span className="dot-label" aria-hidden="true">{section.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <style>{`
@@ -287,7 +297,25 @@ export default function ScrollIndicator() {
             display: none;
           }
         }
+
+        .scroll-progress-bar {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--color-brand-accent), var(--color-brand-sage));
+          transform-origin: left center;
+          z-index: 9999;
+          transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        @media (min-width: 768px) {
+          .scroll-progress-bar {
+            display: none;
+          }
+        }
       `}</style>
-    </div>
+    </>
   );
 }

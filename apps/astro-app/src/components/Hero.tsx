@@ -26,6 +26,13 @@ const Hero: React.FC<HeroProps> = ({
   const line2Text = title2;
 
   useGSAP(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      gsap.set([line1Ref.current, line2Ref.current, subtitleRef.current, ctaRef.current], { opacity: 1, y: 0, rotateX: 0, scale: 1 });
+      return;
+    }
+
     const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } });
 
     // Split Line 1
@@ -94,19 +101,19 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col items-center justify-center pt-32 overflow-hidden px-8"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-32 overflow-hidden px-5 md:px-8"
     >
       {/* Animated Gradient Orbs Background */}
       <div className="absolute inset-0 z-0 parallax-bg opacity-30 pointer-events-none">
         <div
-          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] rounded-full bg-gradient-to-r from-[var(--color-aether-primary)] to-[var(--color-aether-surface-tint)] blur-[100px] mix-blend-screen opacity-50"
+          className="absolute top-1/4 left-1/4 w-[70vw] h-[70vw] md:w-[40vw] md:h-[40vw] rounded-full bg-gradient-to-r from-[var(--color-aether-primary)] to-[var(--color-aether-surface-tint)] blur-[60px] md:blur-[100px] mix-blend-screen opacity-50"
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] rounded-full bg-gradient-to-l from-[var(--color-aether-tertiary)] to-[var(--color-aether-error)] blur-[120px] mix-blend-screen opacity-40"
+          className="absolute bottom-1/4 right-1/4 w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] rounded-full bg-gradient-to-l from-[var(--color-aether-tertiary)] to-[var(--color-aether-error)] blur-[80px] md:blur-[120px] mix-blend-screen opacity-40"
         />
       </div>
 
-      <div className="relative z-20 text-center max-w-5xl mx-auto flex flex-col items-center gap-12">
+      <div className="relative z-20 text-center max-w-5xl mx-auto flex flex-col items-center gap-6 md:gap-12">
         <h1 className="text-5xl md:text-8xl font-black text-[var(--color-aether-on-surface)] leading-[1.1] tracking-tighter drop-shadow-2xl">
           <div ref={line1Ref} className="block">{line1Text}</div>
           {line2Text && (
@@ -125,7 +132,7 @@ const Hero: React.FC<HeroProps> = ({
 
         <button
           ref={ctaRef}
-          className="mt-8 px-8 py-4 rounded-full font-bold text-sm text-[var(--color-brand-primary)] bg-[rgb(89,131,146)] shadow-[0_0_30px_rgba(89,131,146,0.3)] hover:bg-[var(--color-brand-cream)] transition-all duration-300 flex items-center gap-2 group border border-white/10"
+          className="mt-6 md:mt-8 w-full sm:w-auto px-8 py-4 rounded-full font-bold text-sm text-[var(--color-brand-primary)] bg-[rgb(89,131,146)] shadow-[0_0_30px_rgba(89,131,146,0.3)] hover:bg-[var(--color-brand-cream)] transition-all duration-300 flex items-center justify-center sm:justify-start gap-2 group border border-white/10"
         >
           {ctaText}
           <span className="material-symbols-outlined text-[var(--color-brand-primary)] group-hover:translate-x-1 transition-transform">

@@ -201,7 +201,8 @@ export default function SurveyPopup() {
       <style>{`
         .sv-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;}
         .sv-backdrop{position:absolute;inset:0;background:rgba(0,11,15,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
-        .sv-card{position:relative;z-index:1;display:flex;width:100%;max-width:880px;max-height:90vh;overflow:hidden;border-radius:20px;border:1px solid rgba(174,195,176,.15);box-shadow:0 40px 100px rgba(0,0,0,.6);}
+        .sv-card{position:relative;z-index:1;display:flex;width:100%;height:100%;max-height:100vh;border-radius:0;border:1px solid rgba(174,195,176,.15);box-shadow:0 40px 100px rgba(0,0,0,.6);}
+        @media(min-width:600px){.sv-card{border-radius:20px;max-width:880px;max-height:90vh;height:auto;}}
 
         /* LEFT PANEL */
         .sv-panel{display:none;flex-direction:column;width:340px;min-width:340px;background:linear-gradient(160deg,#124559 0%,#01161E 100%);padding:2rem;position:relative;overflow:hidden;}
@@ -216,8 +217,9 @@ export default function SurveyPopup() {
         .sv-dot{width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--color-brand-accent);box-shadow:0 0 8px rgba(89,131,146,.7);}
 
         /* RIGHT FORM COL */
-        .sv-form-col{flex:1;background:linear-gradient(160deg,rgba(18,69,89,.95) 0%,rgba(1,22,30,.98) 100%);padding:2rem 2rem 2rem;overflow-y:auto;position:relative;}
-        .sv-close{position:absolute;top:1rem;right:1rem;background:rgba(174,195,176,.08);border:1px solid rgba(174,195,176,.15);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--color-text-secondary);cursor:pointer;transition:all .25s ease;}
+        .sv-form-col{flex:1;background:linear-gradient(160deg,rgba(18,69,89,.95) 0%,rgba(1,22,30,.98) 100%);padding:1.25rem;overflow-y:auto;position:relative;}
+        @media(min-width:600px){.sv-form-col{padding:2rem 2rem 2rem;}}
+        .sv-close{position:absolute;top:1rem;right:1rem;background:rgba(174,195,176,.08);border:1px solid rgba(174,195,176,.15);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--color-text-secondary);cursor:pointer;transition:all .25s ease;}
         .sv-close:hover{background:rgba(174,195,176,.18);color:var(--color-text-primary);transform:rotate(90deg);}
 
         /* Step indicator */
@@ -231,7 +233,8 @@ export default function SurveyPopup() {
         .sv-eyebrow{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.18em;color:var(--color-brand-accent);margin-bottom:.4rem;}
         .sv-title{font-family:var(--font-family-display);font-size:clamp(1.35rem,1.2rem+.8vw,1.75rem);font-weight:400;color:var(--color-brand-cream);line-height:1.25;margin-bottom:1.4rem;}
         .sv-form{display:flex;flex-direction:column;gap:1rem;}
-        .sv-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+        .sv-row{display:grid;grid-template-columns:1fr;gap:.75rem;}
+        @media(min-width:480px){.sv-row{grid-template-columns:1fr 1fr;}}
         .sv-field{display:flex;flex-direction:column;gap:.35rem;}
         .sv-field label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--color-brand-sage);}
         .sv-field input{background:rgba(1,22,30,.5);border:1px solid rgba(174,195,176,.15);border-radius:8px;padding:.7rem .9rem;color:var(--color-text-primary);font-family:var(--font-family-main);font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s;}
