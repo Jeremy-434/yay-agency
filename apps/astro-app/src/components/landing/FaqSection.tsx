@@ -55,7 +55,11 @@ const FaqSection: React.FC = () => {
       ref={containerRef}
       className="py-20 md:py-32 px-6 md:px-8 bg-[var(--color-redesign-bg)]"
     >
-      <div ref={contentRef} className="max-w-3xl mx-auto opacity-0 translate-y-12">
+      <div
+        ref={contentRef}
+        className="max-w-3xl mx-auto"
+        style={{ opacity: 0, transform: 'translateY(60px)' }}
+      >
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] leading-tight">
@@ -93,7 +97,7 @@ const FaqSection: React.FC = () => {
                 }`}
                 role="region"
               >
-                <p className="text-base text-[var(--color-text-secondary)] leading-relaxed pt-4 border-t border-[var(--color-redesign-border)]">
+                <p className="text-base text-white/80 leading-relaxed pt-4 border-t border-[var(--color-redesign-border)]">
                   {faq.a}
                 </p>
               </div>

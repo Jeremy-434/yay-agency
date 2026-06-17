@@ -1,0 +1,49 @@
+
+> app@0.0.1 build
+> astro check && tsc --noEmit && astro build
+
+10:16:17 [types] Generated 378ms
+10:16:17 [check] Getting diagnostics for Astro files in C:\Users\ronny\Documents\code-projects\Projects\invenio-agency\apps\astro-app...
+Result (17 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+10:16:55 [types] Generated 874ms
+10:16:55 [build] output: "hybrid"
+10:16:55 [build] directory: C:\Users\ronny\Documents\code-projects\Projects\invenio-agency\apps\astro-app\.vercel\output\
+10:16:55 [build] adapter: @astrojs/vercel/serverless
+10:16:55 [build] Collecting build info...
+10:16:55 [build] ✓ Completed in 934ms.
+10:16:55 [build] Building hybrid entrypoints...
+10:17:00 [vite] [32m✓ built in 4.32s[39m
+10:17:00 [build] ✓ Completed in 4.62s.
+
+ building client (vite) 
+10:17:00 [vite] transforming...
+10:17:02 [vite] [32m✓[39m 66 modules transformed.
+10:17:03 [vite] rendering chunks...
+10:17:03 [vite] computing gzip size...
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/CustomCursor.BNn2zEtA.js     [39m[1m[2m  1.72 kB[22m[1m[22m[2m │ gzip:  0.70 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/Hero.CEzPjwke.js             [39m[1m[2m  3.89 kB[22m[1m[22m[2m │ gzip:  1.61 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/Portfolio.D9Cgn2xx.js        [39m[1m[2m  5.02 kB[22m[1m[22m[2m │ gzip:  1.36 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/ScrollIndicator.BJCEQlZp.js  [39m[1m[2m  6.44 kB[22m[1m[22m[2m │ gzip:  2.08 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/Services.CC4WuHKO.js         [39m[1m[2m  7.52 kB[22m[1m[22m[2m │ gzip:  1.50 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/index.q3BAl-rd.js            [39m[1m[2m  7.75 kB[22m[1m[22m[2m │ gzip:  3.01 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/hoisted.CI8hLYrN.js          [39m[1m[2m 15.21 kB[22m[1m[22m[2m │ gzip:  5.13 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/SurveyPopup.BlUGZ5iO.js      [39m[1m[2m 16.33 kB[22m[1m[22m[2m │ gzip:  4.30 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/gsap-config.BhVAyuJV.js      [39m[1m[2m127.45 kB[22m[1m[22m[2m │ gzip: 50.73 kB[22m
+10:17:03 [vite] [2m.vercel/output/static/[22m[36m_astro/client.DQqSkGYW.js           [39m[1m[2m185.74 kB[22m[1m[22m[2m │ gzip: 58.23 kB[22m
+10:17:03 [vite] [32m✓ built in 3.13s[39m
+
+ prerendering static routes 
+10:17:09 ▶ src/pages/index.astro
+10:17:09   └─ /index.html (+29ms)
+10:17:09 ▶ src/pages/post/[slug].astro
+10:17:09 ✓ Completed in 6.14s.
+
+10:17:09 [build] Rearranging server assets...
+10:17:09 [@astrojs/vercel/serverless] Bundling function ..\..\_functions\entry.mjs
+10:17:12 [build] Waiting for integration "@astrojs/vercel/serverless", hook "astro:build:done"...
+10:17:13 [build] Server built in 19.13s
+10:17:13 [build] Complete!

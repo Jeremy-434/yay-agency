@@ -9,9 +9,10 @@ import ScrollIndicator from '../components/ScrollIndicator';
 interface Props {
   title: string;
   showFooter?: boolean;
+  redesignPage?: boolean;
 }
 
-const { title, showFooter = true } = Astro.props;
+const { title, showFooter = true, redesignPage = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -56,6 +57,13 @@ const { title, showFooter = true } = Astro.props;
 
     <title>{title}</title>
     <ViewTransitions />
+    {redesignPage && (
+      <style>
+        :root {
+          --color-brand-sage: var(--color-redesign-cyan);
+        }
+      </style>
+    )}
   </head>
   <body class="selection:bg-[var(--color-brand-accent)] selection:text-[var(--color-brand-primary)]">
     <CustomCursor client:load />

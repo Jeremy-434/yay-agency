@@ -67,12 +67,16 @@ const SolutionSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16"
         >
           {features.map((feature, idx) => (
-            <div key={idx} className="solution-card opacity-0 translate-y-12">
+            <div
+              key={idx}
+              className="solution-card"
+              style={{ opacity: 0, transform: 'translateY(60px)' }}
+            >
               <GlowCard>
                 <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight">
                   {feature.title}
                 </h3>
-                <p className="text-base text-[var(--color-text-secondary)] leading-relaxed">
+                <p className="text-base text-white/80 leading-relaxed">
                   {feature.description}
                 </p>
               </GlowCard>

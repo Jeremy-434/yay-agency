@@ -67,12 +67,16 @@ const TestimonialsSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {testimonials.map((testimonial, idx) => (
-            <div key={idx} className="testimonial-card opacity-0 translate-y-12">
+            <div
+              key={idx}
+              className="testimonial-card"
+              style={{ opacity: 0, transform: 'translateY(60px)' }}
+            >
               <GlowCard>
                 <h3 className="text-lg md:text-xl font-bold text-[var(--color-redesign-emerald)] mb-4">
                   {testimonial.title}
                 </h3>
-                <p className="text-base text-[var(--color-text-secondary)] mb-6 leading-relaxed italic">
+                <p className="text-base text-white/80 mb-6 leading-relaxed italic">
                   "{testimonial.quote}"
                 </p>
                 <p className="text-sm md:text-base font-semibold text-[var(--color-text-primary)]">

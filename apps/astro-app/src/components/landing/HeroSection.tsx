@@ -78,7 +78,8 @@ const HeroSection: React.FC = () => {
       {/* Subheadline */}
       <p
         ref={subheadlineRef}
-        className="text-base md:text-lg text-[var(--color-text-secondary)] max-w-2xl text-center mb-10 md:mb-14 opacity-0 translate-y-6 leading-relaxed"
+        className="text-base md:text-lg text-white/80 max-w-2xl text-center mb-10 md:mb-14 leading-relaxed"
+        style={{ opacity: 0, transform: 'translateY(24px)' }}
       >
         No dejes que la recepción lenta deje huecos en tu agenda. Conecta una infraestructura impulsada por IA que califica y agenda citas automáticamente 24/7. Regístrate para conocer nuestro sistema
       </p>
@@ -86,7 +87,8 @@ const HeroSection: React.FC = () => {
       {/* Trust Badges */}
       <div
         ref={bulletsRef}
-        className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center text-sm md:text-base text-[var(--color-text-secondary)] mb-12 md:mb-16 opacity-0 translate-y-6"
+        className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center text-sm md:text-base text-white/80 mb-12 md:mb-16"
+        style={{ opacity: 0, transform: 'translateY(24px)' }}
       >
         <div>✓ Garantía por contrato</div>
         <div>✓ Agentes IA 24/7</div>
@@ -95,7 +97,8 @@ const HeroSection: React.FC = () => {
       {/* CTA Button */}
       <div
         ref={buttonRef}
-        className="mb-12 md:mb-16 opacity-0 translate-y-6"
+        className="mb-12 md:mb-16"
+        style={{ opacity: 0, transform: 'translateY(24px)' }}
       >
         <button
           className="rounded-full px-8 py-4 min-h-[48px] bg-gradient-to-r from-[var(--color-redesign-cyan)] to-[var(--color-redesign-emerald)] text-[#0a0a0a] font-black uppercase tracking-widest text-sm shadow-[var(--shadow-glow-cyan)] hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[var(--color-redesign-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
@@ -108,9 +111,10 @@ const HeroSection: React.FC = () => {
       {/* Video Placeholder */}
       <div
         ref={videoRef}
-        className="w-full max-w-4xl aspect-video rounded-2xl border border-white/10 bg-gradient-to-br from-[#0f1a1a] to-[#0a0a0a] flex items-center justify-center mb-12 md:mb-16 opacity-0 translate-y-6 overflow-hidden"
+        className="w-full max-w-4xl aspect-video rounded-2xl border border-white/10 bg-gradient-to-br from-[#0f1a1a] to-[#0a0a0a] flex items-center justify-center mb-12 md:mb-16 overflow-hidden"
         role="img"
         aria-label="Demo de la plataforma Invenio"
+        style={{ opacity: 0, transform: 'translateY(24px)' }}
       >
         <div className="w-16 h-16 rounded-full border-2 border-[var(--color-redesign-cyan)] flex items-center justify-center opacity-60">
           <span className="material-symbols-outlined text-[var(--color-redesign-cyan)] text-3xl">play_arrow</span>
@@ -120,7 +124,8 @@ const HeroSection: React.FC = () => {
       {/* Bottom Caption */}
       <p
         ref={captionRef}
-        className="text-center text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl opacity-0 translate-y-6"
+        className="text-center text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl"
+        style={{ opacity: 0, transform: 'translateY(24px)' }}
       >
         Recupere el control de su tiempo y de su facturación sin aprender programas complicados.
       </p>

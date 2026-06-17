@@ -32,13 +32,14 @@ const ProblemSection: React.FC = () => {
     >
       <div
         ref={contentRef}
-        className="max-w-3xl mx-auto text-center opacity-0 translate-y-12"
+        className="max-w-3xl mx-auto text-center"
+        style={{ opacity: 0, transform: 'translateY(60px)' }}
       >
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-8 md:mb-10 leading-tight">
           ¿Cansado de ver huecos en su calendario por culpa de pacientes que agendan y no asisten?
         </h2>
 
-        <p className="text-base md:text-lg text-[var(--color-text-secondary)] mb-12 md:mb-16 leading-relaxed">
+        <p className="text-base md:text-lg text-white/80 mb-12 md:mb-16 leading-relaxed">
           Las agencias comunes le cobran un costoso trabajo que no filtra curiosos. Nuestro sistema pre-construido integra un CRM de calificación que separa a los preguntones de los prospectos listos para compra.
         </p>
 
